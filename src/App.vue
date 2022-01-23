@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <div class="wrapper revert"></div>
-    <custom-nav></custom-nav>
+    <custom-nav/>
     <div class="container">
-      <span class="toptext" v-parallax.centerX="0.4">CREATIVITY</span>
+      <span class="toptext" v-parallax.centerX="0.60">CREATIVITY</span>
       <section id="home">
         <div class="media responsive">
-          <img src=".\assets\images\me_blob_trans_2.png" id="me_blob_small" draggable="false">
+          <img src=".\assets\images\me_blob_trans_2_v2.png" id="me_blob_small" draggable="false">
         </div>
         <div class="content">
           <span class="header">
-            Hi, I am 
+            Hi, I am
             <span class="name">Patrick Huizinga</span>
           </span>
           <span class="subheader">
@@ -23,9 +23,7 @@
           </div>
         </div>
         <div class="media">
-          <!-- <img src=".\assets\images\blob_gradient.png" id="blob" draggable="false"> -->
-          <!-- <img src=".\assets\images\me_cutout.png" id="me" draggable="false"> -->
-          <img src=".\assets\images\me_blob_trans.png" id="me_blob" draggable="false">
+          <img src=".\assets\images\me_blob_trans_v2.png" id="me_blob" draggable="false">
         </div>
         <!-- onContextMenu="return false;" -->
         <!-- <div class="go-down">
@@ -35,27 +33,38 @@
       <section id="aboutme">
         <div class="bio">
           <img id="hidden-portrait" src=".\assets\images\me_portrait.jpg" draggable="false">
-          <div class="about-text">
-            <span id="about-header">ABOUT 
-              <span id="hidden-text">ME</span> 
-            </span>
-            <span id="about-description">During my Application- and mediadeveloper education which included internships and creating projects through teamwork, I've grown a passion for front-end development. Creating and improving the visualization of websites is my mission.</span>
-          </div>
+          <transition name="slide-fade">
+            <div class="about-text">
+              <span id="about-header">ABOUT
+                <span id="hidden-text">ME</span>
+              </span>
+              <span id="about-description">
+                During my Application- and mediadeveloper education which
+                included internships and teamprojects, I've grown a passion
+                for front-end development. Creating and improving the
+                visualization of websites by expressing my creativity is my mission.
+              </span>
+            </div>
+          </transition>
           <div class="about-image">
             <span>ME</span>
             <img id="portrait" src=".\assets\images\me_portrait.jpg" draggable="false">
           </div>
         </div>
-        <skills></skills>
+        <skills-grid/>
       </section>
-      <contact-button></contact-button>
+      <section id="projects">
+        <projects-grid/>
+      </section>
+      <contact-button/>
     </div>
   </div>
 </template>
 
 <script>
 import CustomNav from './components/CustomNav.vue'
-import Skills from './components/Skills.vue'
+import SkillsGrid from './components/SkillsGrid.vue'
+import ProjectsGrid from './components/ProjectsGrid.vue'
 import ContactButton from './components/ContactButton.vue'
 
 export default {
@@ -64,21 +73,22 @@ export default {
       title: 'Portfolio | Patrick Huizinga'
   },
   components: {
-    CustomNav, 
-    Skills,
+    CustomNav,
+    SkillsGrid,
+    ProjectsGrid,
     ContactButton
   }
 }
 </script>
 
 <style lang="scss">
-@import './assets/styles/style.scss';
+@import '@/assets/styles/style.scss';
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #222222;
+  color: #ffffff;
   font-family: "Poppins", Helvetica, Arial;
 }
 </style>

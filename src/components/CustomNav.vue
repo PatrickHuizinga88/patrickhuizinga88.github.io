@@ -2,14 +2,15 @@
     <nav class="top-nav" id="myTopnav">
         <div class="container">
             <div class="items-container">
-                <!-- <a class="nav-item" href="#aboutme">About me</a> -->
+                <a class="nav-item" href="#aboutme">About me</a>
                 <!-- <a class="nav-item" href="#projects">Projects</a> -->
                 <!-- <a class="nav-item" href="#contact">Contact</a> -->
             </div>
             <!-- <a href="javascript:void(0);" class="icon" @click="myFunction">
                 <i class="fa fa-bars"></i>
             </a> -->
-            <a class="logo" href="#home"><img src="../assets/images/PH_bodoni_v1.png"></a>
+            <!-- <a class="logo" href="#home"><img src="../assets/images/PH_bodoni_v1.png"></a> -->
+            <a class="logo" href="#home"><img src="../assets/images/PH_bodoni_v1_white.png"></a>
             <div class="social-container">
                 <a class="social-button" href="https://www.linkedin.com/in/patrick-huizinga-3957b914b/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
@@ -17,21 +18,26 @@
     </nav>
 </template>
 
-<style>
+<style lang="scss">
+
+$primairy-color: #24D4CD;
+$secondary-color: #A200FF;
 
 nav {
     position: absolute;
     overflow: hidden;
     top: 0;
     width: 100%;
-    background: #fff;
-    border-bottom: 1px solid #101010;
+    /* background: #fff; */
+    background: #000;
+    /* border-bottom: 1px solid #101010; */
+    border-bottom: 1px solid #000;
     /* border-bottom: 1px solid lightgray; */
     /* box-shadow: 0px 2px 5px #dddddd; */
     z-index: 100;
 }
 
-nav .container { 
+nav .container {
     text-align: center !important;
 }
 
@@ -44,7 +50,8 @@ nav .container {
 }
 
 a {
-    color: #101010 !important;
+    /* color: #101010 !important; */
+    color: #fff !important;
     text-decoration: none !important;
 }
 
@@ -64,7 +71,7 @@ a {
     padding: 0;
     border-top: 5px solid;
     border-image-slice: 1;
-    border-image-source: linear-gradient(to left, #344feb, #8f3ad5);
+    border-image-source: linear-gradient(to left, $primairy-color, $secondary-color);
     transition: 0.3s;
 }
 
@@ -139,7 +146,7 @@ a {
         margin: 10px 0 10px 0
     }
 
-} 
+}
 
 
 </style>
@@ -148,7 +155,7 @@ a {
     export default {
         data: function () {
             return {
-                
+
             }
         },
         methods: {
