@@ -1,24 +1,5 @@
-# patrickhuizinga88.github.io
+# My Portfolio
 
-## Project setup
-```
-npm install
-```
+**Demo: https://patrickhuizinga88.github.io/**
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This website, which is made in Vue, contains a short story about me and some of my development skills.
