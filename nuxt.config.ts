@@ -8,6 +8,9 @@ export default defineNuxtConfig({
         ],
     },
   },
+  nitro: {
+    preset: 'github_pages',
+  },
   css: ['../assets/css/main.css'],
   devtools: { enabled: true },
   modules: [
