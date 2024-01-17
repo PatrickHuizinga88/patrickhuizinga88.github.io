@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed bottom-12 left-1/2 -translate-x-1/2 mix-blend-exclusion backdrop-blur-md bg-neutral-200 rounded-lg shadow-[0_0_16px_#000] z-50">
+    <div class="fixed bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 mix-blend-exclusion backdrop-blur-md bg-neutral-200 rounded-lg shadow-[0_0_16px_#000] z-50">
         <nav class="p-0.5 bg-transparent">
             <ul class="flex gap-0.5 text-neutral-950 text-sm sm:text-base font-semibold">
                 <li v-for="item in navigation" class="rounded-md overflow-hidden">

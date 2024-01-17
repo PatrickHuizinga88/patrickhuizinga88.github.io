@@ -38,7 +38,7 @@
             </a>
         </li>
 
-        <li class="group relative col-span-4 md:col-span-2 aspect-square overflow-hidden bg-gradient-to-bl from-[#6EDAFF] to-[#C286FF] gif-finder-background">
+        <li class="group relative col-span-4 md:col-span-2 aspect-square overflow-hidden bg-gradient-to-bl from-[#6EDAFF] to-[#C286FF] gif-finder-background bg-cover">
             <a href="https://patrickhuizinga.nl/gif-finder" target="_blank">
                 <div class="flex justify-center items-center h-full w-full font-handwriting font-semibold text-3xl sm:text-5xl text-white leading-tight">
                     GIF Finder

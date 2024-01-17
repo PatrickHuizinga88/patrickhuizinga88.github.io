@@ -109,18 +109,18 @@
           <h1 class="relative inline-block text-5xl sm:text-6xl font-handwriting">Let's talk!</h1>
         </div>
 
-        <div class="col-span-6 col-start-2 bg-gradient-to-br from-primary-300 to-accent p-1 rounded-3xl overflow-hidden shadow-[10px_10px_45px_-20px_#7DE3D2,-10px_-10px_45px_-20px_#8C50F3]">
+        <div class="col-span-6 xl:col-span-4 col-start-2 xl:col-start-3 max-w-6xl bg-gradient-to-br from-primary-300 to-accent p-1 rounded-3xl overflow-hidden shadow-[10px_10px_45px_-20px_#7DE3D2,-10px_-10px_45px_-20px_#8C50F3]">
           <ul class="grid grid-cols-2 gap-x-2 bg-neutral-950 text-lg sm:text-xl rounded-[1.3rem] p-2">
             
             <li class="flex justify-center items-center rounded-2xl hover:bg-neutral-800 duration-300">
-              <a href="mailto:patrickhuizinga44@gmail.com" class="flex justify-center items-center w-full py-12 px-8">
+              <a href="mailto:patrickhuizinga44@gmail.com" class="flex justify-center items-center w-full py-8 sm:py-12 px-8">
                 <Icon name="Envelope" class="h-12 sm:h-16 w-12 sm:w-16 stroke-2" solid/>
                 <div class="sr-only">E-mail</div>
               </a>
             </li>
             
             <li class="rounded-2xl hover:bg-neutral-800 duration-300">
-              <a href="https://www.linkedin.com/in/patrick-huizinga-3957b914b/" target="_blank" class="flex justify-center items-center w-full py-12 px-8">
+              <a href="https://www.linkedin.com/in/patrick-huizinga-3957b914b/" target="_blank" class="flex justify-center items-center w-full py-8 sm:py-12 px-8">
                 <img src="./assets/images/linkedin.svg" alt="LinkedIn" class="h-10 sm:h-14 w-10 sm:w-14">
               </a>
             </li>
