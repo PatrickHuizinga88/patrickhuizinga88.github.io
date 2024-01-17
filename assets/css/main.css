@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply text-neutral-200;
+        @apply bg-neutral-950;
+    }
+    
+    .gradient-underline:after {
+        @apply content-[''] absolute top-full w-[160px] sm:w-[240px] left-0 h-1.5 sm:h-[10px] rounded-[5px] bg-gradient-to-r from-primary-300 to-accent -z-10;
+    }
+}
