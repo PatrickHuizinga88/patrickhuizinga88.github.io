@@ -30,8 +30,8 @@
 </template>
 
 <script setup lang="ts">
-import Diploma from '../assets/images/diploma.jpg';
-import OneZeroOneMedia from '../assets/images/101media.png';
+import Diploma from '../assets/images/diploma.webp';
+import OneZeroOneMedia from '../assets/images/101media.webp';
 
 const adventureItems = [
     {

@@ -4,23 +4,23 @@
     <section id="intro" class="relative grid grid-cols-8 h-screen gap-y-20 sm:gap-y-32">
       <img src="./assets/images/background.webp" alt="" class="absolute h-full w-full object-cover -z-30">
       <div class="col-span-6 md:col-span-4 col-start-2 md:col-start-3 z-10 mt-auto">
-        <transition 
-          enter-active-class="transition ease-out duration-1000" 
-          enter-from-class="opacity-0 translate-y-6" 
+        <transition
+          enter-active-class="transition ease-out duration-1000"
+          enter-from-class="opacity-0 translate-y-6"
           enter-to-class="opacity-100 translate-y-0"
           appear
         >
-          <img 
+          <img
             v-if="isLoaded"
-            src="./assets/images/patrick-huizinga.svg" 
-            alt="Patrick Huizinga" 
+            src="./assets/images/patrick-huizinga.svg"
+            alt="Patrick Huizinga"
             class="w-full">
         </transition>
       </div>
 
-      <transition 
-        enter-active-class="transition ease-out duration-1000 delay-200" 
-        enter-from-class="opacity-0 translate-y-6" 
+      <transition
+        enter-active-class="transition ease-out duration-1000 delay-200"
+        enter-from-class="opacity-0 translate-y-6"
         enter-to-class="opacity-100 translate-y-0"
         appear
       >
@@ -48,7 +48,7 @@
             :initial="{ y: 16, opacity: 0 }"
             :visibleOnce="{ y: 0, opacity: 1, transition: { duration: 700, ease: 'easeOut' }}"
           >
-            <span 
+            <span
               class="inline-block mb-8"
               v-motion
               :initial="{ rotate: 0, x: 0, y: 0 }"
@@ -56,7 +56,7 @@
             >👋🏻</span><br />
             Hi there,
           </h1>
-          <p 
+          <p
             class="text-2xl sm:text-3xl leading-snug font-handwriting"
             v-motion
             :initial="{ y: 16, opacity: 0 }"
@@ -78,7 +78,7 @@
           </div>
         </div>
         <div class="col-span-6 sm:col-span-2 col-start-2 sm:col-start-6 bg-gradient-to-br from-primary-300 to-accent p-1 rounded-3xl overflow-hidden shadow-[10px_10px_45px_-20px_#7DE3D2,-10px_-10px_45px_-20px_#8C50F3] mt-16 sm:mt-0">
-          <img src="./assets/images/me.jpeg" alt="Me" class="aspect-square sm:aspect-auto object-cover object-top rounded-[1.25rem]">
+          <img src="./assets/images/me.webp" alt="Patrick Huizinga" class="aspect-square sm:aspect-auto object-cover object-top rounded-[1.25rem]">
         </div>
       </div>
     </section>
@@ -111,14 +111,14 @@
 
         <div class="col-span-6 xl:col-span-4 col-start-2 xl:col-start-3 max-w-6xl bg-gradient-to-br from-primary-300 to-accent p-1 rounded-3xl overflow-hidden shadow-[10px_10px_45px_-20px_#7DE3D2,-10px_-10px_45px_-20px_#8C50F3]">
           <ul class="grid grid-cols-2 gap-x-2 bg-neutral-950 text-lg sm:text-xl rounded-[1.3rem] p-2">
-            
+
             <li class="flex justify-center items-center rounded-2xl hover:bg-neutral-800 duration-300">
               <a href="mailto:patrickhuizinga44@gmail.com" class="flex justify-center items-center w-full py-8 sm:py-12 px-8">
                 <Icon name="Envelope" class="h-12 sm:h-16 w-12 sm:w-16 stroke-2" solid/>
                 <div class="sr-only">E-mail</div>
               </a>
             </li>
-            
+
             <li class="rounded-2xl hover:bg-neutral-800 duration-300">
               <a href="https://www.linkedin.com/in/patrick-huizinga-3957b914b/" target="_blank" class="flex justify-center items-center w-full py-8 sm:py-12 px-8">
                 <img src="./assets/images/linkedin.svg" alt="LinkedIn" class="h-10 sm:h-14 w-10 sm:w-14">
@@ -126,7 +126,7 @@
             </li>
           </ul>
         </div>
-        
+
       </div>
     </section>
   </main>

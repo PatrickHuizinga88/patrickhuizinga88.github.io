@@ -3,8 +3,11 @@ export default defineNuxtConfig({
   app: {
     head: {
         title: 'Portfolio | Patrick Huizinga',
+        meta: [
+          { name: 'description', content: 'A front-end developer that loves doing creative things with code.' }
+        ],
         link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
         ],
     },
   },
