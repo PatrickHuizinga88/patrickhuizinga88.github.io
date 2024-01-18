@@ -30,10 +30,10 @@
                             <img src="../assets/images/projects/trello-clone/icon.svg" alt="" class="absolute mr-3 duration-300 opacity-50">
                             <img src="../assets/images/projects/trello-clone/icon.svg" alt="" class="absolute group-hover:-rotate-[18deg] mr-3 duration-300">
                         </div>
-                        
+
                         <img src="../assets/images/projects/trello-clone/text.svg" alt="" class="h-6 sm:h-auto">
                     </div>
-                    <span class="text-2xl font-normal mt-2 -ml-3">clone</span>
+                    <span class="text-xl sm:text-2xl font-normal mt-2 -ml-3">clone</span>
                 </div>
             </a>
         </li>
