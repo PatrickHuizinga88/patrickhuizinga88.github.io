@@ -1,15 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    'components/**/*.{vue,js,ts}',
-    'layouts/**/*.vue',
-    'pages/**/*.vue',
-    'composables/**/*.{js,ts}',
-    'plugins/**/*.{js,ts}',
-    'App.{js,ts,vue}',
-    'app.{js,ts,vue}',
-    'Error.{js,ts,vue}',
-    'error.{js,ts,vue}',
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./app.vue",
+    "./error.vue",
   ],
   theme: {
     extend: {
