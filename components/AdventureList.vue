@@ -35,7 +35,7 @@ import OneZeroOneMedia from '../assets/images/101media.png';
 
 const adventureItems = [
     {
-        date: '2021',
+        date: '2021 July',
         title: 'Graduated as Software Developer',
         highlight: 'Graduated',
         description: 'Exploring software development, completing internships and real client projects. This was my entrance to the great world of webdevelopment.',
@@ -49,7 +49,7 @@ const adventureItems = [
         }
     },
     {
-        date: '2021',
+        date: '2021 Aug - Dec',
         title: 'Exploring front-end development',
         highlight: 'Exploring',
         description: 'With the basic knowledge of webdevelopment, I did a deep-dive into front-end development. Improving my fundamentals and learning about new technologies.',
