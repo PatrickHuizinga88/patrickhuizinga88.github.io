@@ -75,6 +75,7 @@
               <li>📆 24 years old</li>
               <li>📍 Eindhoven, Netherlands</li>
             </ul>
+            <!-- <img src="./assets/images/code-icon.png" alt="" class="h-20 w-20"> -->
           </div>
         </div>
         <div class="col-span-6 sm:col-span-2 col-start-2 sm:col-start-6 bg-gradient-to-br from-primary-300 to-accent p-1 rounded-3xl overflow-hidden shadow-[10px_10px_45px_-20px_#7DE3D2,-10px_-10px_45px_-20px_#8C50F3] mt-16 sm:mt-0">
@@ -114,7 +115,7 @@
 
             <li class="flex justify-center items-center rounded-2xl hover:bg-neutral-800 duration-300">
               <a href="mailto:patrickhuizinga44@gmail.com" class="flex justify-center items-center w-full py-8 sm:py-12 px-8">
-                <Icon name="Envelope" class="h-12 sm:h-16 w-12 sm:w-16 stroke-2" solid/>
+                <Icon name="Mail" class="h-12 sm:h-16 w-12 sm:w-16 stroke-2" />
                 <div class="sr-only">E-mail</div>
               </a>
             </li>
@@ -131,6 +132,19 @@
     </section>
   </main>
 
+  <!-- <footer class="grid grid-cols-8 bg-black pt-24 pb-40">
+    <div class="col-span-6 col-start-2">
+      <div class="flex justify-center items-center gap-x-6">
+        <a href="https://www.linkedin.com/in/patrick-huizinga-3957b914b/" target="_blank" class="p-3 rounded-full hover:bg-neutral-800 duration-300">
+          <Icon name="Linkedin" class="h-7 w-7 text-white" />
+        </a>
+        <a href="https://github.com/PatrickHuizinga88" target="_blank" class="p-3 rounded-full hover:bg-neutral-800 duration-300">
+          <Icon name="Github" class="h-7 w-7 text-white" />
+        </a>
+      </div>
+    </div>
+  </footer> -->
+
   <div class="fixed inset-0 flex justify-between h-full w-full -z-10">
     <div class="invisible"></div>
     <div class="border border-white/[0.1] border-dashed"></div>
@@ -145,6 +159,14 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: 'Portfolio | Patrick Huizinga',
+  ogTitle: 'Portfolio | Patrick Huizinga',
+  description: 'A front-end developer that loves doing creative things with code.',
+  ogDescription: 'A front-end developer that loves doing creative things with code.',
+  ogImage: 'https://patrickhuizinga.nl/intro.jpg'
+})
+
 const isLoaded = ref(false)
 
 onMounted(() => {

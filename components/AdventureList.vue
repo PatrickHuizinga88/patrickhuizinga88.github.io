@@ -44,7 +44,7 @@ const adventureItems = [
             alt: 'Diploma'
         },
         timeline: {
-            icon: 'AcademicCap',
+            icon: 'GraduationCap',
             color: 'secondary-300'
         }
     },
@@ -54,7 +54,7 @@ const adventureItems = [
         highlight: 'Exploring',
         description: 'With the basic knowledge of webdevelopment, I did a deep-dive into front-end development. Improving my fundamentals and learning about new technologies.',
         timeline: {
-            icon: 'MagnifyingGlass',
+            icon: 'Search',
             color: 'neutral-200'
         }
     },
