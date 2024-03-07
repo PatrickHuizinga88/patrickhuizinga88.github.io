@@ -12,8 +12,8 @@
     }
 
     body {
-        @apply text-neutral-200;
-        @apply bg-neutral-950;
+        @apply text-zinc-200;
+        @apply bg-zinc-950;
     }
     
     .gradient-underline:after {

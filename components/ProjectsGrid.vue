@@ -2,7 +2,7 @@
 <template>
     <ul class="grid grid-cols-8">
 
-        <li class="group relative col-span-4 md:col-span-2 aspect-square overflow-hidden">
+        <li class="group relative col-span-4 lg:col-span-2 aspect-square overflow-hidden hover:scale-95 hover:rounded-3xl duration-500">
             <a href="https://patrickhuizinga.nl/weather-app" target="_blank">
                 <div class="flex justify-center items-center h-full w-full font-semibold text-3xl sm:text-5xl text-white leading-tight bg-gradient-to-br from-[#55AEFF] to-[#6543FF]">
                     Weather <br />
@@ -13,7 +13,7 @@
             <img src="../assets/images/projects/weather-app/partially-cloudy.webp" alt="" class="absolute h-24 sm:h-32 bottom-2 sm:bottom-4 left-full group-hover:-translate-x-16 sm:group-hover:-translate-x-28 duration-500">
         </li>
 
-        <li class="col-span-4 md:col-span-2 relative aspect-square">
+        <li class="col-span-4 lg:col-span-2 relative aspect-square overflow-hidden hover:scale-95 hover:rounded-3xl duration-500">
             <a href="https://jumpgestel.nl" target="_blank">
                 <div class="group relative flex justify-center items-center h-full w-full bg-black bg-repeat p-8 de-jump-background">
                     <div class="opacity-0 group-hover:opacity-100 absolute top-0 right-0 inset-0 bg-gradient-to-bl from-primary-500 to-transparent mix-blend-color duration-500"></div>
@@ -22,7 +22,7 @@
             </a>
         </li>
 
-        <li class="group relative col-span-4 md:col-span-2 aspect-square overflow-hidden">
+        <li class="group relative col-span-4 lg:col-span-2 aspect-square overflow-hidden hover:scale-95 hover:rounded-3xl duration-500">
             <a href="https://patrickhuizinga.nl/trello-clone" target="_blank">
                 <div class="flex flex-col justify-center items-center h-full w-full font-semibold text-2xl sm:text-5xl leading-tight bg-teal-600">
                     <div class="flex items-center">
@@ -38,7 +38,7 @@
             </a>
         </li>
 
-        <li class="group relative col-span-4 md:col-span-2 aspect-square overflow-hidden bg-gradient-to-bl from-[#6EDAFF] to-[#C286FF] gif-finder-background bg-cover">
+        <li class="group relative col-span-4 lg:col-span-2 aspect-square overflow-hidden bg-gradient-to-bl from-[#6EDAFF] to-[#C286FF] gif-finder-background bg-cover hover:scale-95 hover:rounded-3xl duration-500">
             <a href="https://patrickhuizinga.nl/gif-finder" target="_blank">
                 <div class="flex justify-center items-center h-full w-full font-handwriting font-semibold text-3xl sm:text-5xl text-white leading-tight">
                     GIF Finder

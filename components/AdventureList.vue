@@ -8,9 +8,9 @@
                 ]"></div>
                 <div :class="[
                     `bg-${item.timeline.color}`,
-                    'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex border-[3px] border-neutral-950 rounded-full p-1'
+                    'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex border-[3px] border-zinc-950 rounded-full p-1'
                     ]">
-                    <Icon :name="item.timeline?.icon" class="h-5 w-5 text-black" :solid="true"/>
+                    <UiIcon :name="item.timeline?.icon" class="h-5 w-5 text-black" :solid="true"/>
                 </div>
             </div>
 
@@ -55,7 +55,7 @@ const adventureItems = [
         description: 'With the basic knowledge of webdevelopment, I did a deep-dive into front-end development. Improving my fundamentals and learning about new technologies.',
         timeline: {
             icon: 'Search',
-            color: 'neutral-200'
+            color: 'zinc-200'
         }
     },
     {
@@ -88,15 +88,15 @@ const timelineGradient = (index: number, color: string) => {
     let gradient = ''
 
     if (index === 0) {
-        gradient += 'from-neutral-950 '
+        gradient += 'from-zinc-950 '
     } else {
-        gradient += 'from-neutral-500 '
+        gradient += 'from-zinc-500 '
     }
 
     if (index === adventureItems.length - 1) {
-        gradient += 'to-neutral-950 '
+        gradient += 'to-zinc-950 '
     } else {
-        gradient += 'to-neutral-500 '
+        gradient += 'to-zinc-500 '
     }
 
     gradient += `via-${color}`

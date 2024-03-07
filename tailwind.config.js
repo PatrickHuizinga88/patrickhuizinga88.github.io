@@ -54,10 +54,10 @@ export default {
     },
   },
   safelist: [
-    { pattern: /from-(primary|secondary|white|neutral|teal|rose)-(200|300|500|950)/ },
-    { pattern: /via-(primary|secondary|white|neutral|teal|rose)-(200|300|500|950)/ },
-    { pattern: /to-(primary|secondary|white|neutral|teal|rose)-(200|300|500|950)/ },
-    { pattern: /bg-(primary|secondary|white|neutral|teal|rose)-(200|300|500|950)/ },
+    { pattern: /from-(primary|secondary|white|zinc|teal|rose)-(200|300|500|950)/ },
+    { pattern: /via-(primary|secondary|white|zinc|teal|rose)-(200|300|500|950)/ },
+    { pattern: /to-(primary|secondary|white|zinc|teal|rose)-(200|300|500|950)/ },
+    { pattern: /bg-(primary|secondary|white|zinc|teal|rose)-(200|300|500|950)/ },
   ],
   plugins: [
       require('@tailwindcss/forms')
