@@ -105,11 +105,11 @@
 
     <section id="contact" class="py-24 sm:py-40">
       <div class="grid grid-cols-8">
-        <div class="relative col-span-6 xl:col-span-4 col-start-2 xl:col-start-3 rounded-3xl bg-zinc-900/75">
-          <div class="p-6 sm:p-10 bg-gradient-to-br from-primary-500/15 to-accent/15 rounded-3xl bg-opacity-10">
+        <div class="relative col-span-full sm:col-span-6 xl:col-span-4 sm:col-start-2 xl:col-start-3 sm:rounded-3xl bg-zinc-900/75">
+          <div class="bg-gradient-to-br from-primary-500/15 to-accent/15 sm:rounded-3xl px-6 py-8 sm:p-10">
             <div class="flex gap-6 sm:gap-8 items-end mb-12 z-10">
-              <img src="./assets/images/memoji-smile-cropped.webp" alt="" class="h-24 sm:h-32 -mt-12 sm:-mt-20">
-              <h1 class="text-4xl sm:text-6xl font-handwriting">Let's talk!</h1>
+              <img src="./assets/images/memoji-smile-cropped.webp" alt="" class="h-28 sm:h-32 -mt-12 sm:-mt-20">
+              <h1 class="text-5xl sm:text-6xl font-handwriting">Let's talk!</h1>
             </div>
             
             <form v-if="!formSuccess" @submit.prevent="sendEmail" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
@@ -125,7 +125,7 @@
               <UiFormField
                 label="Email"
                 id="email"
-                required
+                
                 >
                 <UiFormInput v-model="form.email" type="email" />
               </UiFormField>
