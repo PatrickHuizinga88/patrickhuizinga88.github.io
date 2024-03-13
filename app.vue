@@ -139,7 +139,12 @@
                 <UiFormTextarea v-model="form.message" rows="6"/>
               </UiFormField>
 
-              <button type="submit" class="sm:col-span-2 rounded-md bg-primary-300 px-3 py-2 font-semibold text-zinc-900 hover:bg-primary-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary duration-300">Send</button>
+              <button 
+                type="submit" 
+                :disabled="formPending"
+                class="flex justify-center items-center sm:col-span-2 rounded-md bg-primary-300 px-3 py-2 font-semibold text-zinc-900 hover:bg-primary-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary duration-300">
+                Send <UiIcon v-if="formPending" name="Loader2" class="h-5 w-5 ml-2 animate-spin"/>
+              </button>
             
             </form>
 
@@ -189,13 +194,15 @@ const form = reactive({
 })
 const formSuccess = ref(false)
 const formError = ref('')
+const formPending = ref(false)
 
 onMounted(() => {
   mounted.value = true
 })
 
 const sendEmail = async () => {
-  const { data } = await useFetch('/api/send', {
+  formPending.value = true
+  const { error } = await useFetch('/api/send', {
     method: 'POST',
     body: {
       name: form.name,
@@ -204,12 +211,14 @@ const sendEmail = async () => {
     }
   })
 
-  if (!data.value.error) {
-    formSuccess.value = true
-    formError.value = ''
-  } else {
+  if (error.value) {
     formError.value = 'Ouch... Something went wrong, please try again later.'
+    return
   }
+
+  formSuccess.value = true
+  formError.value = ''
+  formPending.value = false
 }
 </script>
 
