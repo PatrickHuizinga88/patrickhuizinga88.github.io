@@ -1,13 +1,12 @@
 import { Resend } from 'resend'
 
-const resendApiKey = useRuntimeConfig().resendApiKey as string
-const resend = new Resend(resendApiKey)
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export default defineEventHandler(async (event) => {
     const { name, email, message } = await readBody(event)
 
     try {
-        const { data, error } = await resend.emails.send({
+        const data = await resend.emails.send({
             from: `${name} <noreply@notifications.patrickhuizinga.nl>`,
             to: 'patrickhuizinga44@gmail.com',
             reply_to: email,
@@ -15,15 +14,8 @@ export default defineEventHandler(async (event) => {
             text: message,
         })
 
-        if (error) {
-            return createError({
-                statusMessage: error.name,
-                message: error.message,
-            })
-        }
-        
         return data
     } catch (error) {
-        throw error
+        throw { error }
     }
 });
