@@ -150,7 +150,7 @@
 
             <p v-else class="mt-4">Thank you! Your message has been sent.</p>
 
-            <p v-if="formError" class="text-red-500 mt-4">{{ formError }}</p>
+            <p v-if="formError" class="text-red-500 mt-4">{{ formError }} <a href="mailto:patrickhuizinga44@gmail.com" class="underline font-medium hover:text-red-400 duration-300">contact me directly</a>.</p>
 
           </div>
         </div>
@@ -212,7 +212,7 @@ const sendEmail = async () => {
   })
 
   if (error.value) {
-    formError.value = 'Ouch... Something went wrong, please try again later.'
+    formError.value = 'Ouch... Something went wrong, please try again later or '
     return
   }
 
