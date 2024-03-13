@@ -30,7 +30,4 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  runtimeConfig: {
-    resendApiKey: process.env.RESEND_API_KEY,
-  }
 })
