@@ -14,6 +14,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
+        env: # Or as an environment variable
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       # Pick your own package manager and build script
       - run: npm install
       - run: npm run build --preset=github_pages

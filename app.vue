@@ -196,7 +196,8 @@ onMounted(() => {
 
 const sendEmail = async () => {
   const { data } = await useFetch('/api/send', {
-    query: {
+    method: 'POST',
+    body: {
       name: form.name,
       email: form.email,
       message: form.message
