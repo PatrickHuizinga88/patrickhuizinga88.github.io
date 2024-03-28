@@ -9,8 +9,9 @@ import PatrickHuizinga from '../assets/patrick-huizinga.svg';
 import Background from '../assets/background.webp';
 import Me from '../assets/me.webp';
 import GradientTeal from '../assets/gradient-teal.svg';
-import GradintPurple from '../assets/gradient-purple.svg';
+import GradientPurple from '../assets/gradient-purple.svg';
 import ContactForm from '../components/ContactForm.vue';
+import Memoji from "../assets/memoji-smile.webp";
 ---
 
 <Layout>
@@ -104,7 +105,7 @@ import ContactForm from '../components/ContactForm.vue';
         <AdventureList class="col-span-7 mt-8 sm:mt-12"/>
       </div>
       <Image src={GradientTeal} alt="" class="absolute right-0 top-40 -z-20"/>
-      <Image src={GradintPurple} alt="" class="absolute left-0 bottom-56 -z-20"/>
+      <Image src={GradientPurple} alt="" class="absolute left-0 bottom-56 -z-20"/>
     </section>
 
     <section id="showcase" class="py-24 sm:py-40">
@@ -117,7 +118,9 @@ import ContactForm from '../components/ContactForm.vue';
     </section>
 
     <section id="contact" class="py-24 sm:py-40">
-      <ContactForm client:idle />
+      <ContactForm client:idle>
+        <Image src={Memoji} alt="" class="h-28 sm:h-32 w-auto -mt-12 sm:-mt-20"/>
+      </ContactForm>
     </section>
   </main>
 </Layout>
