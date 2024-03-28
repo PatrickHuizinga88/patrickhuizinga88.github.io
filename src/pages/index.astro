@@ -1,0 +1,123 @@
+---
+import {Image} from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+
+import AdventureList from '../components/AdventureList.astro';
+import ProjectsGrid from '../components/ProjectsGrid.astro';
+
+import PatrickHuizinga from '../assets/patrick-huizinga.svg';
+import Background from '../assets/background.webp';
+import Me from '../assets/me.webp';
+import GradientTeal from '../assets/gradient-teal.svg';
+import GradintPurple from '../assets/gradient-purple.svg';
+import ContactForm from '../components/ContactForm.vue';
+---
+
+<Layout>
+  <main class="mb-12">
+    <section id="intro" class="relative grid grid-cols-8 h-screen gap-y-20 sm:gap-y-32">
+      <Image src={Background} alt="" class="absolute h-full w-full object-cover -z-30"/>
+      <div class="col-span-6 md:col-span-4 col-start-2 md:col-start-3 z-10 mt-auto">
+        <Image
+                src={PatrickHuizinga}
+                alt="Patrick Huizinga"
+                class="w-full"
+                data-aos="custom-fade-up"
+                data-aos-duration="700"
+                data-aos-once="true"
+        />
+      </div>
+
+      <div class="relative col-span-6 sm:col-span-4 col-start-2 sm:col-start-3 grid grid-cols-4 font-handwriting text-2xl sm:text-3xl mb-auto gap-y-16 sm:gap-y-24"
+           data-aos="custom-fade-up"
+           data-aos-duration="700"
+           data-aos-delay="100"
+           data-aos-once="true"
+      >
+        <div class="col-span-full sm:col-span-2 text-center px-8">
+          a glimpse of my journey
+        </div>
+
+        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-4xl font-bold">&</span>
+
+        <div class="col-span-full sm:col-span-2 text-center px-8">
+          a showcase of creations
+        </div>
+      </div>
+
+      <div class="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-neutral-950 to-transparent -z-20"></div>
+    </section>
+
+    <section id="about-me" class="py-24 sm:py-40">
+      <div class="grid grid-cols-8 items-center">
+        <div class="col-span-6 sm:col-span-3 col-start-2 sm:col-start-2">
+          <h1
+                  class="font-bold text-5xl sm:text-7xl mb-6"
+                  data-aos="custom-fade-up"
+                  data-aos-duration="700"
+                  data-aos-once="true"
+          >
+				<span
+                class="inline-block mb-8"
+                data-aos="wave"
+                data-aos-delay="1000"
+                data-aos-duration="250"
+                data-aos-once="true"
+        >👋🏻</span><br/>
+            Hi there,
+          </h1>
+          <p
+                  class="text-2xl sm:text-3xl leading-snug font-handwriting"
+                  data-aos="custom-fade-up"
+                  data-aos-duration="700"
+                  data-aos-delay="150"
+                  data-aos-once="true"
+          >
+            Building creative and innovative solutions with code is my passion as a <span class="text-primary-300">front-end developer</span>.
+          </p>
+          <div
+                  class="mt-16 sm:mt-20"
+                  data-aos="custom-fade-up"
+                  data-aos-duration="700"
+                  data-aos-delay="300"
+                  data-aos-once="true"
+          >
+            <h2 class="text-3xl sm:text-4xl font-bold">About me</h2>
+            <ul class="text-lg sm:text-xl space-y-3 sm:space-y-4 mt-4">
+              <li>📆 24 years old</li>
+              <li>📍 Eindhoven, Netherlands</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-span-6 sm:col-span-2 col-start-2 sm:col-start-6 bg-gradient-to-br from-primary-300 to-accent p-1 rounded-3xl overflow-hidden shadow-[10px_10px_45px_-20px_#7DE3D2,-10px_-10px_45px_-20px_#8C50F3] mt-16 sm:mt-0">
+          <Image src={Me} alt="Patrick Huizinga"
+                 class="aspect-square sm:aspect-auto object-cover object-top rounded-[1.25rem]"/>
+        </div>
+      </div>
+    </section>
+
+    <section id="my-adventure" class="relative py-24 sm:py-40">
+      <div class="grid grid-cols-8">
+        <div class="col-start-2 col-span-6">
+          <h1 class="relative inline-block text-4xl sm:text-7xl font-bold gradient-underline">My adventure</h1>
+        </div>
+        <AdventureList class="col-span-7 mt-8 sm:mt-12"/>
+      </div>
+      <Image src={GradientTeal} alt="" class="absolute right-0 top-40 -z-20"/>
+      <Image src={GradintPurple} alt="" class="absolute left-0 bottom-56 -z-20"/>
+    </section>
+
+    <section id="showcase" class="py-24 sm:py-40">
+      <div class="grid grid-cols-8">
+        <div class="col-start-2 col-span-6">
+          <h1 class="relative inline-block text-4xl sm:text-7xl font-bold gradient-underline">Showcase</h1>
+        </div>
+      </div>
+      <ProjectsGrid class="mt-12 sm:mt-20"/>
+    </section>
+
+    <section id="contact" class="py-24 sm:py-40">
+      <ContactForm client:idle />
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,45 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+    date: string;
+    title: string;
+    highlight?: string;
+    description: string;
+    image?: {
+        path: string;
+        alt: string;
+    },
+    class: string;
+}
+
+const { date, title, highlight, description, image, class: className } = Astro.props;
+
+const highlightedText = () => {
+    if (!highlight) return title
+
+    return title.replace(
+        highlight, 
+        `<span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">${highlight}</span>`
+    )
+}
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
+if (image && !images[image.path]) throw new Error(`"${image.path}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,webp}"`);
+---
+
+<div class={`${className} grid grid-cols-6 items-center`} data-aos="custom-fade-up"
+     data-aos-duration="700"
+     data-aos-once="true">
+    <div class="col-span-full sm:col-span-3 py-0 sm:py-28">
+        <time datetime={date} class="inline-flex font-handwriting text-lg sm:text-[1.4rem] text-neutral-300 mb-0 sm:mb-1">{ date }</time>
+        <h2 class="text-2xl sm:text-4xl font-semibold mb-4 sm:mb-6" set:html={highlightedText()}></h2>
+        <p class="sm:text-xl leading-relaxed">{ description }</p>
+    </div>
+    { image ? (
+        <div class="col-span-full sm:col-span-2 col-start-1 sm:col-start-5 rounded-3xl overflow-hidden mt-10 sm:mt-0">
+            <Image src={images[image.path]()} alt={"hello"}/>
+        </div>
+    ) : ''}
+</div>

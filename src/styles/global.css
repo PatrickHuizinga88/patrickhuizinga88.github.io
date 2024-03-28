@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply text-neutral-200;
+        @apply bg-neutral-950;
+    }
+    
+    .gradient-underline:after {
+        @apply content-[''] absolute top-full w-[160px] sm:w-[240px] left-0 h-1.5 sm:h-[10px] rounded-[5px] bg-gradient-to-r from-primary-300 to-accent -z-10;
+    }
+}
+
+[data-aos="custom-fade-up"] {
+    transform: translateY(1rem);
+    opacity: 0;
+    transition: ease-out;
+}
+
+[data-aos="custom-fade-up"].aos-animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.animate-zoom-in {
+    animation: zoom-in .3s ease-out;
+    animation-play-state: running;
+    animation-delay: .7s;
+    animation-fill-mode: both;
+    transform-origin: 0 0;
+}
+
+[data-aos="wave"].aos-animate {
+    animation: wave .25s ease-in-out;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+    animation-delay: 1s;
+}
+
+@keyframes wave {
+    from {
+        rotate: 0deg;
+        transform: translate(0, 0);
+    }
+    to {
+        rotate: 12deg;
+        transform: translate(12px, -6px);
+    }
+}
+
+@keyframes zoom-in {
+    from {
+        scale: 0.9;
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+        transition: ease-out;
+    }
+}
