@@ -21,14 +21,15 @@ const sendEmail = async () => {
     })
   })
 
-  if (!res) {
+  formPending.value = false
+
+  if (!res.ok) {
     formError.value = 'Ouch... Something went wrong, please try again later or '
     return
   }
 
   formSuccess.value = true
   formError.value = ''
-  formPending.value = false
 }
 </script>
 
@@ -41,7 +42,6 @@ const sendEmail = async () => {
           <h1 class="text-5xl sm:text-6xl font-handwriting">Let's talk!</h1>
         </div>
         <form v-if="!formSuccess" @submit.prevent="sendEmail" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
-
           <div>
             <label for="name" class="inline-block font-medium text-sm mb-1">Your name</label>
             <input
@@ -77,15 +77,14 @@ const sendEmail = async () => {
           <button
               type="submit"
               :disabled="formPending"
-              class="flex justify-center items-center sm:col-span-2 rounded-md bg-primary-300 px-3 py-2 font-semibold text-zinc-900 hover:bg-primary-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary duration-300">
+              class="flex justify-center items-center sm:col-span-2 rounded-md bg-primary-300 px-3 py-2 font-semibold text-zinc-900 hover:bg-primary-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-50 duration-300">
             Send
           </button>
-
         </form>
 
         <p v-else class="mt-4">Thank you! Your message has been sent.</p>
 
-        <p v-if="formError" class="text-red-500 mt-4">{{ formError }} <a href="mailto:patrickhuizinga44@gmail.com" class="underline font-medium hover:text-red-400 duration-300">contact me directly</a>.</p>
+        <p v-if="formError" class="text-red-500 mt-4">{{ formError }} <a href="mailto:patrickhuizinga44@gmail.com" class="underline font-medium hover:text-red-400 duration-300" target="_blank">contact me directly</a>.</p>
 
       </div>
     </div>
