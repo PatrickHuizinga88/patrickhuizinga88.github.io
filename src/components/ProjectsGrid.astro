@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import Thunder from "../assets/projects/weather-app/thunder.webp";
 import PartiallyCloudy from "../assets/projects/weather-app/partially-cloudy.webp";
-import DeJumpLogo from "../assets/projects/de-jump/logo.svg";
+import LapzyLogo from "../assets/projects/lapzy/logo.svg";
 import TrelloIcon from "../assets/projects/trello-clone/icon.svg";
 import TrelloText from "../assets/projects/trello-clone/text.svg";
 
@@ -26,11 +26,12 @@ const { class: className } = Astro.props;
         <Image src={PartiallyCloudy} alt="" class="absolute h-24 sm:h-32 bottom-2 sm:bottom-4 left-full group-hover:-translate-x-16 sm:group-hover:-translate-x-28 duration-500"/>
     </li>
 
-    <li class="col-span-4 md:col-span-2 relative aspect-square hover:scale-95 hover:rounded-3xl duration-500">
-        <a href="https://jumpgestel.nl" target="_blank">
-            <div class="group relative flex justify-center items-center h-full w-full bg-black bg-repeat p-8 de-jump-background">
-                <div class="opacity-0 group-hover:opacity-100 absolute top-0 right-0 inset-0 bg-gradient-to-bl from-primary-500 to-transparent mix-blend-color duration-500"></div>
-                <Image src={DeJumpLogo} alt="De Jump" class="w-56 z-0"/>
+    <li class="col-span-4 md:col-span-2 relative aspect-square overflow-hidden hover:scale-95 hover:rounded-3xl duration-500">
+        <a href="https://app.lapzy.nl" target="_blank">
+            <div class="group relative flex flex-col justify-center items-center h-full w-full bg-gradient-to-t from-zinc-300 to-white bg-repeat p-8">
+                <div class="opacity-0 group-hover:opacity-25 absolute inset-0 bg-gradient-to-t from-blue-500 to-transparent duration-500"></div>
+                <Image src={LapzyLogo} alt="Lapzy" class="w-12 sm:w-20 z-0"/>
+                <span class="text-3xl sm:text-4xl font-light tracking-widest text-gray-900 mt-4">LAPZY</span>
             </div>
         </a>
     </li>
@@ -43,8 +44,7 @@ const { class: className } = Astro.props;
                         <Image src={TrelloIcon} alt="" class="absolute mr-3 duration-300 opacity-50"/>
                         <Image src={TrelloIcon} alt="" class="absolute group-hover:-rotate-[18deg] mr-3 duration-300"/>
                     </div>
-                    
-                    <Image src={TrelloText} alt="" class="h-6 sm:h-auto"/>
+                    <Image src={TrelloText} alt="" class="h-6 sm:h-auto w-auto"/>
                 </div>
                 <span class="text-2xl font-normal mt-2 -ml-3">clone</span>
             </div>
@@ -62,10 +62,6 @@ const { class: className } = Astro.props;
 </ul>
 
 <style>
-.de-jump-background {
-    background-image: url('../assets/projects/de-jump/pattern.png');
-}
-
 .gif-finder-background:hover {
     background-image: url('../assets/projects/gif-finder/background.gif');
 }

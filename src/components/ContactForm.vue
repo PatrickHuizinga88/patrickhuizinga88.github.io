@@ -91,7 +91,3 @@ const sendEmail = async () => {
 
   </div>
 </template>
-
-<style scoped>
-
-</style>
