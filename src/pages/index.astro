@@ -12,6 +12,13 @@ import GradientTeal from '../assets/gradient-teal.svg';
 import GradientPurple from '../assets/gradient-purple.svg';
 import ContactForm from '../components/ContactForm.vue';
 import Memoji from "../assets/memoji-smile.webp";
+
+const currentAge = () => {
+  const birthDate = new Date('1999-11-01');
+  const ageDifMs = Date.now() - birthDate.getTime();
+  const ageDate = new Date(ageDifMs);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
 ---
 
 <Layout>
@@ -85,7 +92,7 @@ import Memoji from "../assets/memoji-smile.webp";
           >
             <h2 class="text-3xl sm:text-4xl font-bold">About me</h2>
             <ul class="text-lg sm:text-xl space-y-3 sm:space-y-4 mt-4">
-              <li>📆 24 years old</li>
+              <li>📆 {currentAge} years old</li>
               <li>📍 Eindhoven, Netherlands</li>
             </ul>
           </div>
