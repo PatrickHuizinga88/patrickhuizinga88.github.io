@@ -39,7 +39,16 @@ export default {
 			},
 			strokeWidth: {
 			  '3': '3px'
-			}
+			},
+			animation: {
+				'fade-up': 'fade-up .7s cubic-bezier(.28,.61,.67,.99)'
+			},
+			keyframes: {
+				'fade-up': {
+					'0%': { opacity: '0', transform: 'translateY(1.5rem)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' },
+				}
+			},
 		},
 		container: {
 			center: true
@@ -51,5 +60,7 @@ export default {
 		{ pattern: /to-(primary|secondary|white|neutral|teal|rose)-(200|300|500|950)/ },
 		{ pattern: /bg-(primary|secondary|white|neutral|teal|rose)-(200|300|500|950)/ },
 	],
-	plugins: [],
+	plugins: [
+		require("tailwindcss-animate"),
+	],
 }
