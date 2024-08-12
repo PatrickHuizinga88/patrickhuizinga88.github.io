@@ -47,7 +47,7 @@ const sendEmail = async () => {
             <input
                 v-model="form.name"
                 id="name"
-                class="ring-zinc-700 block w-full rounded-md bg-zinc-900 border-0 py-2 px-3 ring-1 ring-inset placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-300"
+                class="ring-zinc-700 block w-full rounded-md bg-zinc-900 border-0 py-2 px-3 ring-1 ring-inset placeholder:text-gray-500 focus-visible:outline-none focus:ring-2 focus:ring-primary-300"
                 required
             />
           </div>
@@ -58,7 +58,7 @@ const sendEmail = async () => {
                 v-model="form.email"
                 id="email"
                 type="email"
-                class="ring-zinc-700 block w-full rounded-md bg-zinc-900 border-0 py-2 px-3 ring-1 ring-inset placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-300"
+                class="ring-zinc-700 block w-full rounded-md bg-zinc-900 border-0 py-2 px-3 ring-1 ring-inset placeholder:text-gray-500 focus-visible:outline-none focus:ring-2 focus:ring-primary-300"
                 required
             />
           </div>
@@ -69,7 +69,7 @@ const sendEmail = async () => {
                 v-model="form.message"
                 id="message"
                 rows="6"
-                class="ring-zinc-700 block w-full rounded-md bg-zinc-900 border-0 py-1.5 px-3 ring-1 ring-inset placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-300 sm:leading-6 sm:text-sm"
+                class="ring-zinc-700 block w-full rounded-md bg-zinc-900 border-0 py-1.5 px-3 ring-1 ring-inset placeholder:text-gray-500 focus-visible:outline-none focus:ring-2 focus:ring-primary-300 sm:leading-6 sm:text-sm"
                 required
             />
           </div>
@@ -77,7 +77,7 @@ const sendEmail = async () => {
           <button
               type="submit"
               :disabled="formPending"
-              class="flex justify-center items-center sm:col-span-2 rounded-md bg-primary-300 px-3 py-2 font-semibold text-zinc-900 hover:bg-primary-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-50 duration-300">
+              class="flex justify-center items-center sm:col-span-2 rounded-md bg-primary-300 px-3 py-2 font-semibold text-zinc-900 hover:bg-primary-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-300 ring-offset-zinc-950 disabled:opacity-50 transition-colors duration-300">
             Send
           </button>
         </form>

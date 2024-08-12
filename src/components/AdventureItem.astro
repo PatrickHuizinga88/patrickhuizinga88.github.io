@@ -38,8 +38,8 @@ if (image && !images[image.path]) throw new Error(`"${image.path}" does not exis
         <p class="sm:text-xl leading-relaxed">{ description }</p>
     </div>
     { image ? (
-        <div class="col-span-full sm:col-span-2 col-start-1 sm:col-start-5 relative p-px bg-gradient-to-br from-gray-500 to-gray-700 rounded-3xl mt-10 sm:mt-0">
-            <Image src={images[image.path]()} alt={image.alt} class="rounded-3xl"/>
+        <div class="col-span-full sm:col-span-2 col-start-1 sm:col-start-5 relative p-px bg-gradient-to-br from-gray-600 to-gray-700 rounded-3xl mt-10 sm:mt-0">
+            <Image src={images[image.path]()} alt={image.alt} class="w-full rounded-3xl"/>
             <div class="absolute inset-px shadow-[inset_0_0_75px_#000d] sm:shadow-[inset_0_0_40px_#000d] md:shadow-[inset_0_0_75px_#000d] xl:shadow-[inset_0_0_100px_#000d] rounded-3xl"></div>
         </div>
     ) : ''}
