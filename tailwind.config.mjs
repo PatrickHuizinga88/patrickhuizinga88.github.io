@@ -9,7 +9,7 @@ export default {
 				handwriting: ['Oleo Script', 'cursive']
 			},
 			colors: {
-				"primary": {
+				primary: {
 					50: "#F2ECFE",
 					100: "#E9DEFD",
 					200: "#D0B7FA",
@@ -22,7 +22,7 @@ export default {
 					900: "#19043E",
 					950: "#0C021D"
 				},
-				"secondary": {
+				secondary: {
 					50: "#EEF7FC",
 					100: "#DDEEF8",
 					200: "#B7DBF0",
@@ -35,7 +35,6 @@ export default {
 					900: "#0A2433",
 					950: "#051219"
 				},
-				"accent": "#7DE3D2"
 			},
 			strokeWidth: {
 			  '3': '3px'

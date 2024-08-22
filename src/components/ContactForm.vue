@@ -36,7 +36,7 @@ const sendEmail = async () => {
 <template>
   <div class="grid grid-cols-8">
     <div class="relative col-span-full sm:col-span-6 xl:col-span-4 sm:col-start-2 xl:col-start-3 sm:rounded-3xl bg-zinc-900/75">
-      <div class="bg-gradient-to-br from-primary-500/15 to-accent/15 sm:rounded-3xl px-6 py-8 sm:p-10">
+      <div class="bg-gradient-to-br from-primary-500/15 to-secondary-500/15 sm:rounded-3xl px-6 py-8 sm:p-10">
         <div class="flex gap-6 sm:gap-8 items-end mb-12 z-10">
           <slot />
           <h1 class="text-5xl sm:text-6xl font-handwriting">Let's talk!</h1>
@@ -77,7 +77,7 @@ const sendEmail = async () => {
           <button
               type="submit"
               :disabled="formPending"
-              class="flex justify-center items-center sm:col-span-2 rounded-md bg-primary-300 px-3 py-2 font-semibold text-zinc-900 hover:bg-primary-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-300 ring-offset-zinc-950 disabled:opacity-50 transition-colors duration-300">
+              class="flex justify-center items-center sm:col-span-2 rounded-md bg-primary-600 border border-primary-500 text-neutral-100 px-3 py-2 font-medium hover:bg-primary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-300 ring-offset-zinc-950 disabled:opacity-50 transition-colors duration-300">
             Send
           </button>
         </form>

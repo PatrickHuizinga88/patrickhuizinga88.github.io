@@ -89,7 +89,7 @@ const currentAge = () => {
             </ul>
           </div>
         </div>
-        <div class="col-span-6 sm:col-span-2 col-start-2 sm:col-start-6 bg-gradient-to-br from-gray-600 to-gray-700 p-px rounded-3xl overflow-hidden shadow-[10px_10px_75px_-25px_#7DE3D280,-10px_-10px_75px_-25px_#8C50F380] mt-16 sm:mt-0">
+        <div class="col-span-6 sm:col-span-2 col-start-2 sm:col-start-6 bg-gradient-to-br from-gray-600 to-gray-700 p-px rounded-3xl overflow-hidden shadow-[10px_10px_50px_-20px_#4CA7DB80,-10px_-10px_50px_-20px_#8C50F380] sm:shadow-[10px_10px_75px_-25px_#4CA7DB80,-10px_-10px_75px_-25px_#8C50F380] mt-16 sm:mt-0">
           <Image src={Me} alt="Patrick Huizinga"
                  class="aspect-square sm:aspect-auto object-cover object-top rounded-[1.5rem]"/>
         </div>
@@ -118,7 +118,7 @@ const currentAge = () => {
 
     <section id="contact" class="py-24 sm:py-40">
       <ContactForm client:idle>
-        <Image src={Memoji} alt="" class="h-28 sm:h-32 w-auto -mt-12 sm:-mt-20"/>
+        <Image src={Memoji} alt="" class="h-28 sm:h-32 w-auto -mt-12 sm:-mt-20" aria-hidden="true"/>
       </ContactForm>
     </section>
   </main>

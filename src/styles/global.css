@@ -17,7 +17,7 @@
     }
     
     .gradient-underline:after {
-        @apply content-[''] absolute top-full w-[160px] sm:w-[240px] left-0 h-1.5 sm:h-[10px] rounded-[5px] bg-gradient-to-r from-primary-300 to-accent -z-10;
+        @apply content-[''] absolute top-full w-[160px] sm:w-[240px] left-0 h-1.5 sm:h-[10px] rounded-[5px] bg-gradient-to-r from-primary-500 to-secondary-500 -z-10;
     }
 }
 
