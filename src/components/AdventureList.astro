@@ -80,20 +80,19 @@ const timelineGradient = (index: number, color: string) => {
     if (index === 0) {
         gradient += 'from-neutral-950 '
     } else {
-        gradient += 'from-neutral-500 '
+      gradient += `from-neutral-400 `
     }
 
     if (index === adventureItems.length - 1) {
         gradient += 'to-neutral-950 '
     } else {
-        gradient += 'to-neutral-500 '
+        gradient += 'to-neutral-400 '
     }
 
     gradient += `via-${color}`
 
     return gradient
 }
-
 ---
 
 <ul class={className}>

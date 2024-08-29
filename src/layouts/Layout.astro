@@ -39,22 +39,24 @@ const navigation = [
 
 <slot/>
 
-<footer class="grid grid-cols-8 bg-black pt-24 pb-40">
-  <div class="col-span-6 col-start-2">
-    <div class="flex justify-center items-center gap-x-6">
-      <a href="https://www.linkedin.com/in/patrick-huizinga-3957b914b/" target="_blank" class="p-3 rounded-full hover:bg-zinc-800 transform-color duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
-        <Linkedin class="size-7 text-white" />
-        <span class="sr-only">LinkedIn</span>
-      </a>
-      <a href="https://github.com/PatrickHuizinga88" target="_blank" class="p-3 rounded-full hover:bg-zinc-800 transform-color duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
-        <Github class="size-7 text-white" />
-        <span class="sr-only">GitHub</span>
-      </a>
+<footer class="w-full bg-black pt-24 pb-40">
+  <div class="grid grid-cols-8 max-w-[128rem] mx-auto">
+    <div class="col-span-6 col-start-2">
+      <div class="flex justify-center items-center gap-x-6">
+        <a href="https://www.linkedin.com/in/patrick-huizinga-3957b914b/" target="_blank" class="p-3 rounded-full hover:bg-zinc-800 transform-color duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
+          <Linkedin class="size-7 text-white" />
+          <span class="sr-only">LinkedIn</span>
+        </a>
+        <a href="https://github.com/PatrickHuizinga88" target="_blank" class="p-3 rounded-full hover:bg-zinc-800 transform-color duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
+          <Github class="size-7 text-white" />
+          <span class="sr-only">GitHub</span>
+        </a>
+      </div>
     </div>
   </div>
 </footer>
 
-<div class="fixed inset-0 flex justify-between h-full w-full -z-10">
+<div class="fixed inset-0 flex justify-between h-full w-full max-w-[128rem] mx-auto -z-10">
   <div class="invisible"></div>
   <div class="border border-white/[0.1] border-dashed"></div>
   <div class="border border-white/[0.1] border-dashed"></div>

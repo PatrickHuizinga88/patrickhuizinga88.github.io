@@ -34,7 +34,7 @@ const sendEmail = async () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-8">
+  <div class="grid grid-cols-8 max-w-[128rem] mx-auto">
     <div class="relative col-span-full sm:col-span-6 xl:col-span-4 sm:col-start-2 xl:col-start-3 sm:rounded-3xl bg-zinc-900/75">
       <div class="bg-gradient-to-br from-primary-500/15 to-secondary-500/15 sm:rounded-3xl px-6 py-8 sm:p-10">
         <div class="flex gap-6 sm:gap-8 items-end mb-12 z-10">

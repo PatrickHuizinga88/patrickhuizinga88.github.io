@@ -23,25 +23,27 @@ const currentAge = () => {
 
 <Layout>
   <main class="mb-12">
-    <section id="intro" class="relative grid grid-cols-8 h-screen gap-y-20 sm:gap-y-32">
+    <section id="intro" class="relative h-screen">
       <Image src={Background} alt="" class="absolute h-full w-full object-cover -z-30"/>
-      <div class="col-span-6 md:col-span-4 col-start-2 md:col-start-3 z-10 mt-auto">
-        <Image
-                src={PatrickHuizinga}
-                alt="Patrick Huizinga"
-                class="w-full animate-fade-up fill-mode-both"
-        />
-      </div>
-
-      <div class="relative col-span-6 sm:col-span-4 col-start-2 sm:col-start-3 grid grid-cols-4 font-handwriting text-2xl sm:text-3xl mb-auto gap-y-16 sm:gap-y-24 animate-fade-up delay-150 fill-mode-both">
-        <div class="col-span-full sm:col-span-2 text-center px-8">
-          a glimpse of my journey
+      <div class="grid grid-cols-8 gap-y-20 sm:gap-y-32 h-full max-w-[128rem] mx-auto">
+        <div class="col-span-6 md:col-span-4 col-start-2 md:col-start-3 z-10 mt-auto">
+          <Image
+                  src={PatrickHuizinga}
+                  alt="Patrick Huizinga"
+                  class="w-full animate-fade-up fill-mode-both"
+          />
         </div>
 
-        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-4xl font-bold">&</span>
+        <div class="relative col-span-6 sm:col-span-4 col-start-2 sm:col-start-3 grid grid-cols-4 font-handwriting text-2xl sm:text-3xl mb-auto gap-y-16 sm:gap-y-24 animate-fade-up delay-150 fill-mode-both">
+          <div class="col-span-full sm:col-span-2 text-center px-8">
+            a glimpse of my journey
+          </div>
 
-        <div class="col-span-full sm:col-span-2 text-center px-8">
-          a showcase of creations
+          <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-4xl font-bold">&</span>
+
+          <div class="col-span-full sm:col-span-2 text-center px-8">
+            a showcase of creations
+          </div>
         </div>
       </div>
 
@@ -49,7 +51,7 @@ const currentAge = () => {
     </section>
 
     <section id="about-me" class="py-24 sm:py-40">
-      <div class="grid grid-cols-8 items-center">
+      <div class="grid grid-cols-8 items-center max-w-[128rem] mx-auto">
         <div class="col-span-6 sm:col-span-3 col-start-2 sm:col-start-2">
           <h1
                   class="font-bold text-5xl md:text-6xl lg:text-7xl mb-6"
@@ -62,7 +64,6 @@ const currentAge = () => {
                     data-aos="wave"
                     data-aos-delay="1000"
                     data-aos-duration="250"
-                    data-aos-once="true"
             >👋🏻</span><br/>
             Hi there,
           </h1>
@@ -89,7 +90,8 @@ const currentAge = () => {
             </ul>
           </div>
         </div>
-        <div class="col-span-6 sm:col-span-2 col-start-2 sm:col-start-6 bg-gradient-to-br from-gray-600 to-gray-700 p-px rounded-3xl overflow-hidden shadow-[10px_10px_50px_-20px_#4CA7DB80,-10px_-10px_50px_-20px_#8C50F380] sm:shadow-[10px_10px_75px_-25px_#4CA7DB80,-10px_-10px_75px_-25px_#8C50F380] mt-16 sm:mt-0">
+        <div class="col-span-6 sm:col-span-2 col-start-2 sm:col-start-6 bg-gradient-to-br from-gray-600 to-gray-700 p-px rounded-3xl overflow-hidden mt-16 sm:mt-0"
+             data-aos="shadow">
           <Image src={Me} alt="Patrick Huizinga"
                  class="aspect-square sm:aspect-auto object-cover object-top rounded-[1.5rem]"/>
         </div>
@@ -97,7 +99,7 @@ const currentAge = () => {
     </section>
 
     <section id="my-adventure" class="relative py-24 sm:py-40">
-      <div class="grid grid-cols-8">
+      <div class="grid grid-cols-8 max-w-[128rem] mx-auto">
         <div class="col-start-2 col-span-6">
           <h1 class="relative inline-block text-4xl sm:text-7xl font-bold gradient-underline">My adventure</h1>
         </div>
@@ -108,7 +110,7 @@ const currentAge = () => {
     </section>
 
     <section id="showcase" class="py-24 sm:py-40">
-      <div class="grid grid-cols-8">
+      <div class="grid grid-cols-8 max-w-[128rem] mx-auto">
         <div class="col-start-2 col-span-6">
           <h1 class="relative inline-block text-4xl sm:text-7xl font-bold gradient-underline">Showcase</h1>
         </div>

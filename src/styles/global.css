@@ -47,6 +47,12 @@
     animation-delay: 1s;
 }
 
+[data-aos="shadow"].aos-animate {
+    animation: show-shadow 1s cubic-bezier(.12,.31,.21,.96);
+    animation-delay: 1s;
+    animation-fill-mode: both;
+}
+
 @keyframes wave {
     from {
         rotate: 0deg;
@@ -67,5 +73,14 @@
         scale: 1;
         opacity: 1;
         transition: ease-out;
+    }
+}
+
+@keyframes show-shadow {
+    from {
+        box-shadow: none;
+    }
+    to {
+        box-shadow: 10px 10px 75px -25px #4CA7DB80, -10px -10px 75px -25px #8C50F380;
     }
 }

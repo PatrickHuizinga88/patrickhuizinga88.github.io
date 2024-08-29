@@ -13,7 +13,7 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<ul class={`${className} grid grid-cols-8`}>
+<ul class={`${className} grid grid-cols-8 max-w-[128rem] mx-auto`}>
 
     <li class="group relative col-span-4 md:col-span-2 aspect-square overflow-hidden hover:scale-95 hover:rounded-3xl transition-[transform,border-radius] duration-500 has-[a:focus-visible]:ring-4 has-[a:focus-visible]:ring-primary-500 has-[a:focus-visible]:z-10">
         <a href="https://patrickhuizinga.nl/weather-app" target="_blank">
