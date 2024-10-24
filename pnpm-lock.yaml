@@ -11,6 +11,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.4.1
         version: 0.4.1(typescript@5.3.3)
+      '@astrojs/sitemap':
+        specifier: ^3.2.1
+        version: 3.2.1
       '@astrojs/tailwind':
         specifier: ^5.1.0
         version: 5.1.0(astro@4.2.0(typescript@5.3.3))(tailwindcss@3.4.1)
@@ -86,6 +89,9 @@ packages:
   '@astrojs/prism@3.0.0':
     resolution: {integrity: sha512-g61lZupWq1bYbcBnYZqdjndShr/J3l/oFobBKPA3+qMat146zce3nz2kdO4giGbhYDt4gYdhmoBz0vZJ4sIurQ==}
     engines: {node: '>=18.14.1'}
+
+  '@astrojs/sitemap@3.2.1':
+    resolution: {integrity: sha512-uxMfO8f7pALq0ADL6Lk68UV6dNYjJ2xGUzyjjVj60JLBs5a6smtlkBYv3tQ0DzoqwS7c9n4FUx5lgv0yPo/fgA==}
 
   '@astrojs/tailwind@5.1.0':
     resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
@@ -647,6 +653,12 @@ packages:
 
   '@types/nlcst@1.0.4':
     resolution: {integrity: sha512-ABoYdNQ/kBSsLvZAekMhIPMQ3YUZvavStpKYs7BjLLuKVmIMA0LUgZ7b54zzuWJRbHF80v1cNf4r90Vd6eMQDg==}
+
+  '@types/node@17.0.45':
+    resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
+
+  '@types/sax@1.2.7':
+    resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
 
   '@types/unist@2.0.10':
     resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
@@ -2015,6 +2027,11 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
+  sitemap@8.0.0:
+    resolution: {integrity: sha512-+AbdxhM9kJsHtruUF39bwS/B0Fytw6Fr1o4ZAIAEqA6cke2xcoO2GleBw9Zw7nRzILVEgz7zBM5GiTJjie1G9A==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
+    hasBin: true
+
   source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -2035,6 +2052,9 @@ packages:
 
   stream-parser@0.3.1:
     resolution: {integrity: sha512-bJ/HgKq41nlKvlhccD5kaCr/P+Hu0wPNKPJOH7en+YrJu/9EgqUF+88w5Jb6KNcjOFMhfX4B2asfeAtIGuHObQ==}
+
+  stream-replace-string@2.0.0:
+    resolution: {integrity: sha512-TlnjJ1C0QrmxRNrON00JvaFFlNh5TTG00APw23j74ET7gkQpTASi6/L2fuiav8pzK715HXtUeClpBTw2NPSn6w==}
 
   streamx@2.15.6:
     resolution: {integrity: sha512-q+vQL4AAz+FdfT137VF69Cc/APqUbxy+MDOImRrMvchJpigHj9GksgDU2LYbO9rx7RX6osWgxJB2WxhYv4SZAw==}
@@ -2441,6 +2461,9 @@ packages:
   zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
 
+  zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
@@ -2514,6 +2537,12 @@ snapshots:
   '@astrojs/prism@3.0.0':
     dependencies:
       prismjs: 1.29.0
+
+  '@astrojs/sitemap@3.2.1':
+    dependencies:
+      sitemap: 8.0.0
+      stream-replace-string: 2.0.0
+      zod: 3.23.8
 
   '@astrojs/tailwind@5.1.0(astro@4.2.0(typescript@5.3.3))(tailwindcss@3.4.1)':
     dependencies:
@@ -3023,6 +3052,12 @@ snapshots:
   '@types/nlcst@1.0.4':
     dependencies:
       '@types/unist': 2.0.10
+
+  '@types/node@17.0.45': {}
+
+  '@types/sax@1.2.7':
+    dependencies:
+      '@types/node': 17.0.45
 
   '@types/unist@2.0.10': {}
 
@@ -4768,6 +4803,13 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
+  sitemap@8.0.0:
+    dependencies:
+      '@types/node': 17.0.45
+      '@types/sax': 1.2.7
+      arg: 5.0.2
+      sax: 1.3.0
+
   source-map-js@1.0.2: {}
 
   source-map-js@1.2.0: {}
@@ -4785,6 +4827,8 @@ snapshots:
       debug: 2.6.9
     transitivePeerDependencies:
       - supports-color
+
+  stream-replace-string@2.0.0: {}
 
   streamx@2.15.6:
     dependencies:
@@ -5239,5 +5283,7 @@ snapshots:
   yocto-queue@1.0.0: {}
 
   zod@3.22.4: {}
+
+  zod@3.23.8: {}
 
   zwitch@2.0.4: {}

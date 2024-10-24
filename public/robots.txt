@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://patrickhuizinga.nl/sitemap-index.xml
