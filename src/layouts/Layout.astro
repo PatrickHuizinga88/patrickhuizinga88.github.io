@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import {Linkedin, Github} from 'lucide-astro'
+import CookieConsent from "../components/CookieConsent.astro";
 
 const navigation = [
   {name: 'About me', url: '#about-me'},
@@ -12,21 +13,6 @@ const navigation = [
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({
-      'gtm.start':
-        new Date().getTime(), event: 'gtm.js'
-    });
-    var f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src =
-      'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'dataLayer', 'GTM-PJMLJQXJ');</script>
-  <!-- End Google Tag Manager -->
   <meta charset="UTF-8"/>
   <meta name="description" content="Astro description"/>
   <meta name="viewport" content="width=device-width"/>
@@ -42,12 +28,6 @@ const navigation = [
   <title>Portfolio | Patrick Huizinga</title>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJMLJQXJ"
-          height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="animate-zoom-in fixed bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 mix-blend-exclusion backdrop-blur-md bg-neutral-200 rounded-lg shadow-[0_0_16px_#000] z-50">
   <nav class="p-0.5 bg-transparent">
     <ul class="flex gap-0.5 text-neutral-950 text-sm sm:text-base font-semibold">
@@ -94,6 +74,7 @@ const navigation = [
   <div class="invisible"></div>
 </div>
 
+<CookieConsent />
 <script src="../utils/aos.js"></script>
 </body>
 </html>
