@@ -1,6 +1,6 @@
 ---
 import AdventureItem from './AdventureItem.astro';
-import Icon from './Icon.vue';
+import { GraduationCap, Search, Briefcase, Lightbulb } from 'lucide-astro';
 
 interface Props {
   class: string
@@ -34,7 +34,7 @@ const adventureItems: AdventureItem[] = [
       alt: 'Diploma'
     },
     timeline: {
-      icon: 'AcademicCap',
+      icon: 'GraduationCap',
       color: 'secondary-300'
     }
   },
@@ -44,7 +44,7 @@ const adventureItems: AdventureItem[] = [
     highlight: 'Exploring',
     description: 'With the basic knowledge of webdevelopment, I did a deep-dive into front-end development. Improving my fundamentals and learning about new technologies.',
     timeline: {
-      icon: 'MagnifyingGlass',
+      icon: 'Search',
       color: 'neutral-200'
     }
   },
@@ -78,7 +78,7 @@ const adventureItems: AdventureItem[] = [
     highlight: 'Independent',
     description: 'Specializing in custom websites, web applications, and user-friendly SaaS solutions.',
     timeline: {
-      icon: 'LightBulb',
+      icon: 'Lightbulb',
       color: 'indigo-300'
     }
   },
@@ -103,6 +103,13 @@ const timelineGradient = (index: number, color: string) => {
 
   return gradient
 }
+
+const iconComponents = {
+  GraduationCap,
+  Search,
+  Briefcase,
+  Lightbulb
+};
 ---
 
 <ul class={className}>
@@ -111,7 +118,9 @@ const timelineGradient = (index: number, color: string) => {
             <div class="col-span-1 relative mx-auto timeline h-full">
               <div class={`${timelineGradient(index, item.timeline.color)} bg-gradient-to-b h-full w-0.5 rounded-full`}></div>
               <div class={`bg-${item.timeline.color} absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex border-[3px] border-neutral-950 rounded-full p-1`}>
-                <Icon name={item.timeline.icon} class="w-5 h-5 text-black" solid/>
+                {iconComponents[item.timeline.icon] && (
+                        <iconComponents[item.timeline.icon] class="size-5 text-black" solid />
+                )}
               </div>
             </div>
 

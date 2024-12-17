@@ -1,0 +1,56 @@
+---
+import {cva} from 'class-variance-authority';
+
+interface ButtonProps {
+    variant?: 'primary' | 'secondary' | 'accent' | 'destructive' | 'outline' | 'ghost';
+    size?: 'sm' | 'md' | 'lg' | 'icon';
+    href?: string;
+    class?: string;
+}
+
+const {
+    variant = 'primary',
+    size = 'md',
+    href,
+    class: additionalClasses = '',
+    ...props
+}: ButtonProps = Astro.props;
+
+const buttonClasses = cva(
+    'inline-flex items-center justify-center font-semibold rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors duration-200',
+    {
+        variants: {
+            variant: {
+                primary: 'bg-primary-600 text-primary-foreground hover:bg-primary-500 focus-visible:ring-offset-2',
+                secondary: 'bg-secondary-500 text-secondary-foreground hover:bg-secondary-600',
+                accent: 'bg-accent-500 text-accent-foreground hover:bg-accent-600',
+                destructive: 'bg-red-600 text-red-600-foreground hover:bg-red-600',
+                outline: 'border hover:bg-zinc-900',
+                ghost: 'text-foreground hover:bg-gray-100',
+            },
+            size: {
+                sm: 'px-2.5 h-[36px] text-sm',
+                md: 'px-4 h-10 text-md',
+                lg: 'px-6 h-12 text-lg',
+                icon: 'size-10'
+            },
+            defaultVariants: {
+                variant: 'primary',
+                size: 'md',
+            },
+        }
+    }
+);
+
+const computedClasses = buttonClasses({variant, size}) + ` ${additionalClasses}${href ? ' no-underline' : ''}`;
+---
+
+{href ? (
+<a href={href} class={computedClasses} {...props}>
+    <slot/>
+</a>
+    ) : (
+<button class={computedClasses} {...props}>
+    <slot/>
+</button>
+    )}

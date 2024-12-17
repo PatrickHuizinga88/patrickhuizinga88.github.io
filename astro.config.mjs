@@ -5,6 +5,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), vue(), sitemap()],
-  site: 'https://patrickhuizinga.nl'
+  site: 'https://patrickhuizinga.nl',
+  integrations: [tailwind(), vue(), sitemap()]
 });

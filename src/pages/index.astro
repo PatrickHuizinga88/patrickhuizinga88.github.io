@@ -68,13 +68,13 @@ const currentAge = () => {
             Hi there,
           </h1>
           <p
-                  class="text-2xl sm:text-3xl leading-snug font-handwriting"
+                  class="text-xl md:text-2xl max-w-2xl leading-relaxed md:leading-relaxed"
                   data-aos="custom-fade-up"
                   data-aos-duration="700"
                   data-aos-delay="150"
                   data-aos-once="true"
           >
-            I'm <span class="text-primary-300">Patrick Huizinga</span> a creative web developer with a focus on UX/UI design and modern front-end solutions.
+            I'm Patrick Huizinga, a creative web developer with a focus on <span class="text-primary-300">UX/UI design</span> and modern <span class="text-teal-300">front-end solutions</span>.
           </p>
           <div
                   class="mt-16 sm:mt-20"
@@ -85,8 +85,20 @@ const currentAge = () => {
           >
             <h2 class="text-3xl md:text-4xl font-bold">About me</h2>
             <ul class="text-lg md:text-xl space-y-3 sm:space-y-4 mt-4">
-              <li>📆 {currentAge} years old</li>
-              <li>📍 Eindhoven, Netherlands</li>
+              <li>
+                <span aria-hidden="true">📆</span>
+                <span class="sr-only">Age:</span>
+                {currentAge} years old</li>
+              <li>
+                <span aria-hidden="true">📍</span>
+                <span class="sr-only">Located in:</span>
+                Eindhoven, Netherlands
+              </li>
+              <li>
+                <span aria-hidden="true">🖌️</span>
+                <span class="sr-only">and</span>
+                Loves being creative!
+              </li>
             </ul>
           </div>
         </div>

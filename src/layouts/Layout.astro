@@ -2,11 +2,23 @@
 import '../styles/global.css'
 import {Linkedin, Github} from 'lucide-astro'
 
+interface Props {
+  title?: string;
+  description?: string;
+  heroImage?: string;
+}
+
 const navigation = [
   {name: 'About me', url: '#about-me'},
   {name: 'Showcase', url: '#showcase'},
   {name: 'Contact', url: '#contact'},
 ]
+
+const {
+  title = "Patrick Huizinga - Creative Developer",
+  description = "I’m a creative web developer specializing in modern websites and web applications that help businesses grow and thrive online. Let’s build something great!",
+  heroImage = "https://patrickhuizinga.nl/logo.svg"
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -16,16 +28,16 @@ const navigation = [
   <meta name="description" content="Astro description"/>
   <meta name="viewport" content="width=device-width"/>
   <link rel="icon" type="image/png" href="/favicon.png"/>
-  <meta property="og:title" content="Patrick Huizinga - Creative Developer"/>
+  <meta property="og:title" content={title}/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://patrickhuizinga.nl"/>
-  <meta property="og:site_name" content="Patrick Huizinga - Creative Developer"/>
-  <meta property="description" content="Hi! I'm a webdeveloper that loves building modern websolutions to help people and businesses grow."/>
-  <meta property="og:description" content="Hi! I'm a webdeveloper that loves building modern websolutions to help people and businesses grow."/>
-  <meta property="og:image" content="https://patrickhuizinga.nl/logo.svg"/>
+  <meta property="og:site_name" content={title}/>
+  <meta property="description" content={description}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:image" content={heroImage}/>
   <meta name="generator" content={Astro.generator}/>
   <script defer data-domain="patrickhuizinga.nl" src="https://plausible.io/js/script.js"></script>
-  <title>Patrick Huizinga - Creative Developer</title>
+  <title>{title}</title>
 </head>
 <body>
 
@@ -61,7 +73,7 @@ const navigation = [
   </div>
 </footer>
 
-<div class="fixed inset-0 flex justify-between h-full w-full max-w-[128rem] mx-auto -z-10">
+<div class="fixed inset-0 flex justify-between h-full w-full max-w-[128rem] mx-auto -z-10" aria-hidden="true">
   <div class="invisible"></div>
   <div class="border border-white/[0.1] border-dashed"></div>
   <div class="border border-white/[0.1] border-dashed"></div>
