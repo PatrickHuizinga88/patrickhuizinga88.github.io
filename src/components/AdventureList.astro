@@ -6,7 +6,10 @@ interface Props {
   class: string
 }
 
+type IconName = 'GraduationCap' | 'Search' | 'Briefcase' | 'Lightbulb'
+
 interface AdventureItem {
+  id: number
   date: string
   title: string
   highlight: string
@@ -16,7 +19,7 @@ interface AdventureItem {
     alt: string
   }
   timeline: {
-    icon: string
+    icon: IconName
     color: string
   }
 }
@@ -25,6 +28,7 @@ const {class: className} = Astro.props
 
 const adventureItems: AdventureItem[] = [
   {
+    id: 1,
     date: '2021 July',
     title: 'Graduated as Software Developer',
     highlight: 'Graduated',
@@ -39,6 +43,7 @@ const adventureItems: AdventureItem[] = [
     }
   },
   {
+    id: 2,
     date: '2021 Aug - Dec',
     title: 'Exploring front-end development',
     highlight: 'Exploring',
@@ -49,6 +54,7 @@ const adventureItems: AdventureItem[] = [
     }
   },
   {
+    id: 3,
     date: '2022 Feb - Sept',
     title: 'Front-end developer at 101Media',
     highlight: '101Media',
@@ -63,6 +69,7 @@ const adventureItems: AdventureItem[] = [
     }
   },
   {
+    id: 4,
     date: '2022 Okt - 2024 Dec',
     title: 'Front-end developer at Veldsink Groep',
     highlight: 'Veldsink Groep',
@@ -73,6 +80,7 @@ const adventureItems: AdventureItem[] = [
     }
   },
   {
+    id: 5,
     date: '2024 Dec - Now',
     title: 'Independent UX/UI Designer & Front-end Developer',
     highlight: 'Independent',
@@ -103,13 +111,6 @@ const timelineGradient = (index: number, color: string) => {
 
   return gradient
 }
-
-const iconComponents = {
-  GraduationCap,
-  Search,
-  Briefcase,
-  Lightbulb
-};
 ---
 
 <ul class={className}>
@@ -118,9 +119,10 @@ const iconComponents = {
             <div class="col-span-1 relative mx-auto timeline h-full">
               <div class={`${timelineGradient(index, item.timeline.color)} bg-gradient-to-b h-full w-0.5 rounded-full`}></div>
               <div class={`bg-${item.timeline.color} absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex border-[3px] border-neutral-950 rounded-full p-1`}>
-                {iconComponents[item.timeline.icon] && (
-                        <iconComponents[item.timeline.icon] class="size-5 text-black" solid />
-                )}
+                {item.timeline.icon === 'GraduationCap' && <GraduationCap class="size-5 text-black" />}
+                {item.timeline.icon === 'Search' && <Search class="size-5 text-black" />}
+                {item.timeline.icon === 'Briefcase' && <Briefcase class="size-5 text-black" />}
+                {item.timeline.icon === 'Lightbulb' && <Lightbulb class="size-5 text-black" />}
               </div>
             </div>
 
