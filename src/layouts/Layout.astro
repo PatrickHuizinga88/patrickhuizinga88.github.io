@@ -8,8 +8,6 @@ interface Props {
   heroImage?: string;
 }
 
-const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
-
 const navigation = [
   {name: 'About me', url: '#about-me'},
   {name: 'Showcase', url: '#showcase'},
@@ -38,7 +36,7 @@ const {
   <meta property="og:description" content={description}/>
   <meta property="og:image" content={heroImage}/>
   <meta name="generator" content={Astro.generator}/>
-  <script src="https://cloud.umami.is/script.js" data-website-id={umamiWebsiteId}></script>
+  <script src="https://cloud.umami.is/script.js" data-website-id="36625c1c-54fb-4d72-aec9-31d94def45d7"></script>
   <title>{title}</title>
 </head>
 <body>
