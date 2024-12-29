@@ -8,11 +8,13 @@ interface Props {
   heroImage?: string;
 }
 
+const umamiWebsiteId = import.meta.env.UMAMI_WEBSITE_ID;
+
 const navigation = [
   {name: 'About me', url: '#about-me'},
   {name: 'Showcase', url: '#showcase'},
   {name: 'Contact', url: '#contact'},
-]
+];
 
 const {
   title = "Patrick Huizinga - Creative Developer",
@@ -36,7 +38,7 @@ const {
   <meta property="og:description" content={description}/>
   <meta property="og:image" content={heroImage}/>
   <meta name="generator" content={Astro.generator}/>
-  <script defer data-domain="patrickhuizinga.nl" src="https://plausible.io/js/script.js"></script>
+  <script src="https://cloud.umami.is/script.js" data-website-id={umamiWebsiteId}></script>
   <title>{title}</title>
 </head>
 <body>
