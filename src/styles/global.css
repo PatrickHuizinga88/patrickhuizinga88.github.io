@@ -2,9 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source inline("bg-{primary,secondary,white,neutral,teal,rose,indigo}-{200,300,500,950}");
+@source inline("from-{primary,secondary,white,neutral,teal,rose,indigo}-{200,300,500,950}");
+@source inline("via-{primary,secondary,white,neutral,teal,rose,indigo}-{200,300,500,950}");
+@source inline("to-{primary,secondary,white,neutral,teal,rose,indigo}-{200,300,500,950}");
+
 
 @layer base {
     html {
@@ -21,6 +24,67 @@
     }
 }
 
+@utility container {
+    margin-inline: auto;
+}
+
+@theme {
+    --font-sans: Poppins, sans-serif;
+    --font-display: Righteous, cursive;
+    --font-handwriting: "Oleo Script", cursive;
+
+    --color-primary-50: #F2ECFE;
+    --color-primary-100: #E9DEFD;
+    --color-primary-200: #D0B7FA;
+    --color-primary-300: #BA96F8;
+    --color-primary-400: #A475F6;
+    --color-primary-500: #8C50F3;
+    --color-primary-600: #6515EF;
+    --color-primary-700: #4A0CB5;
+    --color-primary-800: #310877;
+    --color-primary-900: #19043E;
+    --color-primary-950: #0C021D;
+
+    --color-secondary-50: #EEF7FC;
+    --color-secondary-100: #DDEEF8;
+    --color-secondary-200: #B7DBF0;
+    --color-secondary-300: #95CBEA;
+    --color-secondary-400: #6FB8E2;
+    --color-secondary-500: #4CA7DB;
+    --color-secondary-600: #278AC3;
+    --color-secondary-700: #1E6995;
+    --color-secondary-800: #144562;
+    --color-secondary-900: #0A2433;
+    --color-secondary-950: #051219;
+
+    --stroke-width-3: 3px;
+
+    --animate-fade-up: fade-up 0.7s cubic-bezier(0.28, 0.61, 0.67, 0.99);
+    --animate-zoom-in: zoom-in 0.3s ease-out running 0.7s both;
+
+    @keyframes fade-up {
+        0% {
+            opacity: 0;
+            transform: translateY(1.5rem);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes zoom-in {
+        from {
+            scale: 0.9;
+            opacity: 0;
+        }
+        to {
+            scale: 1;
+            opacity: 1;
+            transition: ease-out;
+        }
+    }
+}
+
 [data-aos="custom-fade-up"] {
     transform: translateY(1rem);
     opacity: 0;
@@ -30,14 +94,6 @@
 [data-aos="custom-fade-up"].aos-animate {
     transform: translateY(0);
     opacity: 1;
-}
-
-.animate-zoom-in {
-    animation: zoom-in .3s ease-out;
-    animation-play-state: running;
-    animation-delay: .7s;
-    animation-fill-mode: both;
-    transform-origin: 0 0;
 }
 
 [data-aos="wave"].aos-animate {
@@ -61,18 +117,6 @@
     to {
         rotate: 12deg;
         transform: translate(12px, -6px);
-    }
-}
-
-@keyframes zoom-in {
-    from {
-        scale: 0.9;
-        opacity: 0;
-    }
-    to {
-        scale: 1;
-        opacity: 1;
-        transition: ease-out;
     }
 }
 
