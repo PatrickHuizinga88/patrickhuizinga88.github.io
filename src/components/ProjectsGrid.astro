@@ -1,11 +1,13 @@
 ---
 import {Image} from "astro:assets";
+import {MessageCircle} from "lucide-astro";
 import Thunder from "../assets/projects/weather-app/thunder.webp";
 import PartiallyCloudy from "../assets/projects/weather-app/partially-cloudy.webp";
 import LapzyLogo from "../assets/projects/lapzy/logo.svg";
 import TrelloIcon from "../assets/projects/trello-clone/icon.svg";
 import TrelloText from "../assets/projects/trello-clone/text.svg";
 import DietTailorLogo from "../assets/projects/diettailor/logo.svg";
+import BizzlyLogo from "../assets/projects/bizzly/logo.svg";
 
 interface Props {
   class: string
@@ -30,7 +32,7 @@ const {class: className} = Astro.props;
   </li>
 
   <li class="project-item col-span-4 md:col-span-2 relative aspect-square overflow-hidden z-0 hover:scale-[1.05] hover:rounded-2xl hover:shadow-[0_0_25px_0_rgba(0,0,0,0.3)] hover:z-10 transition-[transform,border-radius,box-shadow] duration-500 has-[a:focus-visible]:ring-4 has-[a:focus-visible]:ring-primary-500 has-[a:focus-visible]:z-10">
-    <a href="https://lapzyweb.netlify.app" target="_blank">
+    <a href="https://lapzy.nl" target="_blank">
       <div class="group relative flex flex-col justify-center items-center h-full w-full bg-gradient-to-t from-zinc-300 to-white bg-repeat p-8">
         <div class="opacity-0 group-hover:opacity-25 absolute inset-0 bg-gradient-to-t from-blue-500 to-transparent duration-500"></div>
         <Image src={LapzyLogo} alt="Lapzy" class="w-12 sm:w-20 z-0"/>
@@ -39,18 +41,10 @@ const {class: className} = Astro.props;
     </a>
   </li>
 
-  <li class="project-item group relative col-span-4 md:col-span-2 aspect-square overflow-hidden z-0 hover:scale-[1.05] hover:rounded-2xl hover:shadow-[0_0_25px_0_rgba(0,0,0,0.3)] hover:z-10 transition-[transform,border-radius,box-shadow] duration-500 has-[a:focus-visible]:ring-4 has-[a:focus-visible]:ring-primary-500 has-[a:focus-visible]:z-10">
-    <a href="https://patrickhuizinga.nl/trello-clone" target="_blank">
-      <div class="flex flex-col justify-center items-center h-full w-full font-semibold text-2xl sm:text-5xl leading-tight bg-teal-600">
-        <div class="flex items-center">
-          <div class="relative h-6 w-6 sm:h-[37px] sm:w-[37px] mr-2 sm:mr-3.5">
-            <Image src={TrelloIcon} alt="" class="absolute mr-3 duration-300 opacity-50"/>
-            <Image src={TrelloIcon} alt="" class="absolute group-hover:-rotate-[18deg] mr-3 duration-300"/>
-          </div>
-          <Image src={TrelloText} alt="" class="h-6 sm:h-auto w-auto"/>
-        </div>
-        <span class="text-2xl font-normal mt-2 -ml-3">clone</span>
-      </div>
+  <li class="project-item group relative col-span-4 md:col-span-2 aspect-square overflow-hidden bg-blue-100 z-0 hover:scale-[1.05] hover:rounded-2xl hover:shadow-[0_0_25px_0_rgba(0,0,0,0.3)] hover:z-10 transition-[transform,border-radius,box-shadow] duration-500 has-[a:focus-visible]:ring-4 has-[a:focus-visible]:ring-primary-500 has-[a:focus-visible]:z-10">
+    <a href="https://bizzly.nl" target="_blank" class="relative flex items-center justify-center h-full w-full p-4">
+      <Image src={BizzlyLogo} alt="Bizzly" class="h-8 sm:h-12 md:h-16 w-auto z-0"/>
+      <MessageCircle class="hidden sm:inline-block opacity-0 size-8 text-white ml-1 -mt-12 group-hover:opacity-100 duration-500"/>
     </a>
   </li>
 
