@@ -1,0 +1,165 @@
+---
+import {Image} from 'astro:assets';
+import DetailLayout from '../layouts/DetailLayout.astro';
+import {projects} from '../data/site';
+---
+
+<DetailLayout name="projects" label="Projects" title="Projects" description="Things Patrick Huizinga has built, from AI for insurance to a motocross performance platform.">
+  <h1 class="sheet-title">Things I've built.</h1>
+
+  <ul class="rows">
+    {projects.map(project => {
+      const Row = project.url ? 'a' : 'div';
+      return (
+        <li>
+          <Row class="row" href={project.url} target={project.url ? '_blank' : undefined} rel={project.url ? 'noopener' : undefined}>
+            <span class="thumb" style={`background: ${project.thumb}`}>
+              {project.logo
+                ? <Image src={project.logo} alt="" class={`logo logo-${project.slug}`}/>
+                : <span class="wordmark">{project.name.toLowerCase()}</span>}
+            </span>
+            <span class="info">
+              <span class="name">
+                {project.name}
+                {project.now && <span class="pill">now</span>}
+              </span>
+              <span class="description">{project.description}</span>
+              <span class="tags">{project.tags.join(' · ')}</span>
+            </span>
+            {project.url && <span class="url">{new URL(project.url).host} ↗</span>}
+          </Row>
+        </li>
+      );
+    })}
+  </ul>
+</DetailLayout>
+
+<style>
+  .rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  li:last-child .row {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .thumb {
+    width: 96px;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    transition: transform .5s var(--ease), border-radius .5s var(--ease);
+  }
+
+  a.row:hover .thumb {
+    transform: scale(1.06) rotate(-2deg);
+    border-radius: 22px;
+  }
+
+  .logo {
+    width: 72%;
+    height: auto;
+  }
+
+  .logo-lapzy {
+    width: 40%;
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -.04em;
+    color: #e9e9ee;
+  }
+
+  .info {
+    min-width: 0;
+  }
+
+  .name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 48;
+    font-weight: 600;
+    font-size: clamp(24px, 2.6vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -.03em;
+  }
+
+  .pill {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  .description {
+    display: block;
+    max-width: 62ch;
+    margin-top: 4px;
+    font-size: 15px;
+    color: var(--ink-2);
+  }
+
+  .tags {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+
+  .url {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ink-3);
+    white-space: nowrap;
+    transition: color .2s;
+  }
+
+  a.row:hover .url {
+    color: var(--ink);
+  }
+
+  @media (max-width: 640px) {
+    .row {
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .thumb {
+      width: 64px;
+      border-radius: 12px;
+    }
+
+    .wordmark {
+      font-size: 15px;
+    }
+
+    .url {
+      grid-column: 2;
+    }
+  }
+</style>

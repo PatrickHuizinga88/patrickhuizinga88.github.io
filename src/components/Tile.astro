@@ -1,0 +1,121 @@
+---
+/*
+  A bento tile that opens a detail page. Its background, label and plus button carry
+  view-transition names, so they morph into the sheet, title and close button of that page.
+*/
+interface Props {
+  href: string
+  name: 'about' | 'projects' | 'contact'
+  label: string
+  raw: string
+}
+
+const {href, name, label, raw} = Astro.props;
+---
+
+<a href={href} class="tile" style={`grid-area: ${name}`} data-tile={name}>
+  <span class="tile-bg" transition:name={`${name}-bg`} aria-hidden="true"></span>
+  <span class="tile-top">
+    <span class="label" transition:name={`${name}-label`}>{label}</span>
+    <span class="plus" transition:name={`${name}-plus`} aria-hidden="true">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </span>
+  </span>
+  <span class="human"><slot/></span>
+  <pre class="raw">{raw}</pre>
+</a>
+
+<style>
+  .tile {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    padding: var(--pad);
+    border-radius: var(--r);
+    color: inherit;
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .tile-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: var(--r);
+    background: var(--tile);
+    border: 1px solid var(--line);
+    transition: background-color .35s ease, border-color .35s ease;
+  }
+
+  .tile:hover .tile-bg {
+    background: var(--tile-2);
+  }
+
+  .tile-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .label {
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+
+  .plus {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    color: var(--ink-2);
+    transition: transform .45s var(--ease), background-color .3s, color .3s, border-color .3s;
+  }
+
+  .tile:hover .plus, .tile:focus-visible .plus {
+    transform: rotate(90deg);
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  .human {
+    display: block;
+  }
+
+  .raw {
+    display: none;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: clamp(11.5px, 1.55vh, 13px);
+    line-height: 1.6;
+    color: var(--ink-2);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  :global(html.agent) .human {
+    display: none;
+  }
+
+  :global(html.agent) .raw {
+    display: block;
+  }
+
+  :global(html.agent) .tile-bg {
+    background: transparent;
+    border: 1px dashed rgb(255 255 255 / .14);
+  }
+
+  :global(html.agent) .plus {
+    opacity: .4;
+  }
+</style>

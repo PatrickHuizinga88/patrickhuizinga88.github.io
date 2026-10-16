@@ -1,0 +1,126 @@
+---
+import DetailLayout from '../layouts/DetailLayout.astro';
+import {site, contact} from '../data/site';
+---
+
+<DetailLayout name="contact" label="Contact" title="Contact" description={`Get in touch with ${site.name}.`}>
+  <h1 class="sheet-title">Let's build something.</h1>
+
+  <div class="mail">
+    <a href={`mailto:${contact.email}`} id="email">{contact.email}</a>
+    <button class="copy" id="copy-email" type="button">Copy</button>
+  </div>
+
+  <ul class="links">
+    <li><span>linkedin</span><a href={contact.linkedin.url} target="_blank" rel="noopener">{contact.linkedin.label} ↗</a></li>
+    <li><span>github</span><a href={contact.github.url} target="_blank" rel="noopener">{contact.github.label} ↗</a></li>
+    <li><span>based</span><span class="value" id="local-time">{site.location}</span></li>
+  </ul>
+</DetailLayout>
+
+<script>
+  function initContact() {
+    const copyButton = document.getElementById('copy-email');
+    const email = document.getElementById('email');
+    const localTime = document.getElementById('local-time');
+    if (!copyButton || !email || !localTime) return;
+
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(email.textContent ?? '');
+        copyButton.textContent = 'Copied';
+      } catch {
+        getSelection()?.selectAllChildren(email);
+        copyButton.textContent = 'Selected';
+      }
+      setTimeout(() => copyButton.textContent = 'Copy', 1600);
+    });
+
+    const time = new Intl.DateTimeFormat('en-GB', {timeZone: 'Europe/Amsterdam', hour: '2-digit', minute: '2-digit'});
+    localTime.textContent = `Eindhoven, NL · ${time.format(new Date())} local time`;
+  }
+
+  document.addEventListener('astro:page-load', initContact);
+</script>
+
+<style>
+  .mail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+  }
+
+  .mail a {
+    min-width: 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 48;
+    font-weight: 500;
+    font-size: clamp(24px, 3.6vw, 52px);
+    letter-spacing: -.03em;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+    overflow-wrap: anywhere;
+    transition: text-decoration-color .3s;
+  }
+
+  .mail a:hover {
+    text-decoration-color: var(--accent);
+  }
+
+  .copy {
+    padding: 10px 18px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .links {
+    list-style: none;
+    max-width: 720px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .links li {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .links li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .links span:first-child {
+    padding-top: 2px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ink-3);
+  }
+
+  .links a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .links a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  @media (max-width: 640px) {
+    .links li {
+      grid-template-columns: 6rem 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,170 @@
+---
+/*
+  A detail page that grows out of its tile on the home grid: the tile background becomes the sheet,
+  the tile label slides into the header, the plus turns into the close button and the photo
+  shrinks into the avatar.
+*/
+import {Image} from 'astro:assets';
+import type {TransitionDirectionalAnimations} from 'astro';
+import Layout from './Layout.astro';
+import {site} from '../data/site';
+import Me from '../assets/patrick.webp';
+
+interface Props {
+  name: 'about' | 'projects' | 'contact'
+  label: string
+  title: string
+  description?: string
+}
+
+const {name, label, title, description} = Astro.props;
+
+const enter = {name: 'vt-in', duration: '.5s', delay: '.2s', easing: 'cubic-bezier(.2, .8, .2, 1)', fillMode: 'both'};
+const leave = {name: 'vt-out', duration: '.15s', easing: 'ease-in', fillMode: 'both'};
+const rise: TransitionDirectionalAnimations = {
+  forwards: {old: [leave], new: [enter]},
+  backwards: {old: [leave], new: [enter]},
+};
+---
+
+<Layout title={`${title} · ${site.name}`} description={description}>
+  <div class="sheet-bg" transition:name={`${name}-bg`} aria-hidden="true"></div>
+
+  <div class="sheet" data-sheet>
+    <header class="sheet-head">
+      <a href="/" class="home" data-close aria-label="Back to the home page">
+        <Image src={Me} alt="" widths={[80, 160]} sizes="40px" class="avatar" transition:name="photo"/>
+        <span class="label" transition:name={`${name}-label`}>{label}</span>
+      </a>
+      <a href="/" class="close" data-close transition:name={`${name}-plus`} aria-label="Close">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </a>
+    </header>
+
+    <main class="sheet-body" transition:animate={rise}>
+      <slot/>
+    </main>
+  </div>
+</Layout>
+
+<script>
+  import {navigate} from 'astro:transitions/client';
+
+  // Go back in history when this page was opened from the home grid, so the tile morphs back into place
+  function close(event?: Event) {
+    if (!document.querySelector('[data-sheet]')) return;
+    event?.preventDefault();
+    let openedFromHome = false;
+    try {
+      openedFromHome = sessionStorage.getItem('opened-from-home') === location.pathname;
+      sessionStorage.removeItem('opened-from-home');
+    } catch {}
+    if (openedFromHome && history.length > 1) history.back();
+    else navigate('/');
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') close(event);
+  });
+
+  // Capture phase, so this runs before the router's own link handling
+  document.addEventListener('click', (event) => {
+    if ((event.target as Element).closest('[data-close]')) close(event);
+  }, true);
+</script>
+
+<style>
+  .sheet-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: var(--tile);
+  }
+
+  .sheet {
+    max-width: 1240px;
+    min-height: 100dvh;
+    margin-inline: auto;
+    padding-block: calc(20px + env(safe-area-inset-top, 0px)) calc(56px + env(safe-area-inset-bottom, 0px));
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: flex;
+    flex-direction: column;
+    gap: clamp(32px, 7vh, 80px);
+  }
+
+  .sheet-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .home {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
+    background: #c9c6f2;
+  }
+
+  .label {
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+
+  .home:hover .label {
+    color: var(--ink-2);
+  }
+
+  /* The tile's plus, turned into a cross */
+  .close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    color: var(--ink);
+    transform: rotate(45deg);
+    transition: background-color .3s, color .3s;
+  }
+
+  .close:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .sheet-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 6vh, 64px);
+  }
+
+  .sheet-body :global(.sheet-title) {
+    margin: 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 96;
+    font-weight: 700;
+    font-size: clamp(40px, min(6.4vw, 11vh), 112px);
+    line-height: .9;
+    letter-spacing: -.045em;
+    text-wrap: balance;
+  }
+
+  .sheet-body :global(.h3) {
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-3);
+  }
+</style>

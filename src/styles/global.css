@@ -1,130 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap');
 
 @import "tailwindcss";
-@source inline("bg-{primary,secondary,white,neutral,teal,rose,indigo}-{200,300,500,950}");
-@source inline("from-{primary,secondary,white,neutral,teal,rose,indigo}-{200,300,500,950}");
-@source inline("via-{primary,secondary,white,neutral,teal,rose,indigo}-{200,300,500,950}");
-@source inline("to-{primary,secondary,white,neutral,teal,rose,indigo}-{200,300,500,950}");
 
+/* One quiet dark look. The only accent is used where AI is involved. */
+:root {
+    --bg: #0d0d0f;
+    --tile: #151517;
+    --tile-2: #1c1c1f;
+    --line: rgb(255 255 255 / .075);
+    --ink: #f0eee9;
+    --ink-2: #a19fa6;
+    --ink-3: #6b6970;
+    --accent: #eaa5d2;
+    --on-accent: #141416;
 
-@layer base {
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        @apply text-neutral-200;
-        @apply bg-neutral-950;
-    }
-    
-    .gradient-underline:after {
-        @apply content-[''] absolute top-full w-[160px] sm:w-[240px] left-0 h-1.5 sm:h-[10px] rounded-[5px] bg-gradient-to-r from-primary-500 to-secondary-500 -z-10;
-    }
-}
-
-@utility container {
-    margin-inline: auto;
+    --r: 22px;
+    --gap: 10px;
+    --pad: clamp(16px, 2.4vh, 24px);
+    --ease: cubic-bezier(.2, .8, .2, 1);
+    --ease-morph: cubic-bezier(.7, 0, .2, 1);
+    color-scheme: dark;
 }
 
 @theme {
-    --font-sans: Poppins, sans-serif;
-    --font-display: Righteous, cursive;
-    --font-handwriting: "Oleo Script", cursive;
+    --font-sans: Geist, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
 
-    --color-primary-50: #F2ECFE;
-    --color-primary-100: #E9DEFD;
-    --color-primary-200: #D0B7FA;
-    --color-primary-300: #BA96F8;
-    --color-primary-400: #A475F6;
-    --color-primary-500: #8C50F3;
-    --color-primary-600: #6515EF;
-    --color-primary-700: #4A0CB5;
-    --color-primary-800: #310877;
-    --color-primary-900: #19043E;
-    --color-primary-950: #0C021D;
-
-    --color-secondary-50: #EEF7FC;
-    --color-secondary-100: #DDEEF8;
-    --color-secondary-200: #B7DBF0;
-    --color-secondary-300: #95CBEA;
-    --color-secondary-400: #6FB8E2;
-    --color-secondary-500: #4CA7DB;
-    --color-secondary-600: #278AC3;
-    --color-secondary-700: #1E6995;
-    --color-secondary-800: #144562;
-    --color-secondary-900: #0A2433;
-    --color-secondary-950: #051219;
-
-    --stroke-width-3: 3px;
-
-    --animate-fade-up: fade-up 0.7s cubic-bezier(0.28, 0.61, 0.67, 0.99);
-    --animate-zoom-in: zoom-in 0.3s ease-out running 0.7s both;
-
-    @keyframes fade-up {
-        0% {
-            opacity: 0;
-            transform: translateY(1.5rem);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
+@layer base {
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 15px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
     }
-    @keyframes zoom-in {
-        from {
-            scale: 0.9;
-            opacity: 0;
-        }
-        to {
-            scale: 1;
-            opacity: 1;
-            transition: ease-out;
-        }
+
+    :focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 3px;
+        border-radius: 8px;
     }
 }
 
-[data-aos="custom-fade-up"] {
-    transform: translateY(1rem);
-    opacity: 0;
-    transition: ease-out;
+/* ---------- view transitions ---------- */
+
+/* Tiles, labels, the plus/close button and the photo morph between pages */
+::view-transition-group(*) {
+    animation-duration: .6s;
+    animation-timing-function: var(--ease-morph);
 }
 
-[data-aos="custom-fade-up"].aos-animate {
-    transform: translateY(0);
-    opacity: 1;
+/* Backgrounds stretch instead of keeping their aspect ratio, so a tile grows into a page */
+::view-transition-old(about-bg), ::view-transition-new(about-bg),
+::view-transition-old(projects-bg), ::view-transition-new(projects-bg),
+::view-transition-old(contact-bg), ::view-transition-new(contact-bg) {
+    height: 100%;
 }
 
-[data-aos="wave"].aos-animate {
-    animation: wave .25s ease-in-out;
-    animation-iteration-count: 4;
-    animation-direction: alternate;
-    animation-delay: 1s;
+/* Keep the small morphing parts above the growing background */
+::view-transition-group(about-bg), ::view-transition-group(projects-bg), ::view-transition-group(contact-bg) {
+    z-index: 1;
 }
 
-[data-aos="shadow"].aos-animate {
-    animation: show-shadow 1s cubic-bezier(.12,.31,.21,.96);
-    animation-delay: 1s;
-    animation-fill-mode: both;
+::view-transition-group(photo), ::view-transition-group(about-label), ::view-transition-group(about-plus),
+::view-transition-group(projects-label), ::view-transition-group(projects-plus),
+::view-transition-group(contact-label), ::view-transition-group(contact-plus) {
+    z-index: 2;
 }
 
-@keyframes wave {
+@keyframes vt-in {
     from {
-        rotate: 0deg;
-        transform: translate(0, 0);
-    }
-    to {
-        rotate: 12deg;
-        transform: translate(12px, -6px);
+        opacity: 0;
+        transform: translateY(16px);
     }
 }
 
-@keyframes show-shadow {
-    from {
-        box-shadow: none;
-    }
+@keyframes vt-out {
     to {
-        box-shadow: 10px 10px 75px -25px #4CA7DB80, -10px -10px 75px -25px #8C50F380;
+        opacity: 0;
+    }
+}
+
+@keyframes rise {
+    from {
+        opacity: .001;
+        transform: translateY(12px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) {
+        animation: none !important;
     }
 }

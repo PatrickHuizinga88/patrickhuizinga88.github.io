@@ -1,139 +1,512 @@
 ---
 import {Image} from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import Tile from '../components/Tile.astro';
+import {site, contact, projects, llmsText} from '../data/site';
 
-import AdventureList from '../components/AdventureList.astro';
-import ProjectsGrid from '../components/ProjectsGrid.astro';
+import Me from '../assets/patrick.webp';
 
-import PatrickHuizinga from '../assets/patrick-huizinga.svg';
-import Background from '../assets/background.webp';
-import Me from '../assets/me.webp';
-import GradientTeal from '../assets/gradient-teal.svg';
-import GradientPurple from '../assets/gradient-purple.svg';
-import ContactForm from '../components/ContactForm.vue';
-import Memoji from "../assets/memoji-smile.webp";
-
-const currentAge = () => {
-  const birthDate = new Date('1999-11-01');
-  const ageDifMs = Date.now() - birthDate.getTime();
-  const ageDate = new Date(ageDifMs);
-  return Math.abs(ageDate.getUTCFullYear() - 1970);
+// What an AI agent sees of each tile when the agent view is on
+const raw = {
+  photo: `![${site.name}]\nalt:  checked shirt, white T-shirt,\n      lavender background`,
+  hello: `# Hi, I'm Patrick.\n\n> I build web solutions for people,\n> and lately for AI agents too.`,
+  about: `## About\nrole:  builder\nbased: ${site.location}\nnow:   co-founder, Insync\nmore:  /about`,
+  projects: [`## Projects (${projects.length})`, ...projects.map(p => `- ${p.name}${p.now ? ' (now)' : ''}`), 'more: /projects'].join('\n'),
+  contact: `## Contact\nemail:    ${contact.email}\nlinkedin: /in/${contact.linkedin.label}\ngithub:   ${contact.github.label}\nmore:     /contact`,
 }
+
+// Rough token estimate (about 4 characters per token) for the plain-text version of the site
+const tokens = Math.round(llmsText().length / 4);
 ---
 
 <Layout>
-  <main class="mb-12">
-    <section id="intro" class="relative h-screen">
-      <Image src={Background} alt="" class="absolute h-full w-full object-cover -z-30"/>
-      <div class="grid grid-cols-8 gap-y-20 sm:gap-y-32 h-full max-w-[128rem] mx-auto">
-        <div class="col-span-6 md:col-span-4 col-start-2 md:col-start-3 z-10 mt-auto">
-          <Image
-                  src={PatrickHuizinga}
-                  alt="Patrick Huizinga"
-                  class="w-full animate-fade-up fill-mode-both"
-          />
+  <div class="page">
+    <main class="bento">
+      <figure class="photo" transition:name="photo">
+        <Image src={Me} alt={site.name} widths={[360, 540]} sizes="(max-width: 640px) 50vw, (max-width: 1080px) 33vw, 22vw" loading="eager"/>
+        <pre class="raw">{raw.photo}</pre>
+      </figure>
+
+      <section class="hello" aria-labelledby="hello-title">
+        <div class="human">
+          <h1 id="hello-title">Hi, I'm Patrick.</h1>
+          <p class="lede">{site.intro}</p>
         </div>
+        <pre class="raw raw-hello">{raw.hello}</pre>
+      </section>
 
-        <div class="relative col-span-6 sm:col-span-4 col-start-2 sm:col-start-3 grid grid-cols-4 font-handwriting text-2xl sm:text-3xl mb-auto gap-y-16 sm:gap-y-24 animate-fade-up delay-150 fill-mode-both">
-          <div class="col-span-full sm:col-span-2 text-center px-8">
-            a glimpse of my journey
-          </div>
+      <Tile href="/about" name="about" label="About" raw={raw.about}>
+        <span class="statement">A builder from Eindhoven.</span>
+        <span class="sub"><span class="now-dot" aria-hidden="true"></span>Now building Insync</span>
+      </Tile>
 
-          <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-4xl font-bold">&</span>
-
-          <div class="col-span-full sm:col-span-2 text-center px-8">
-            a showcase of creations
-          </div>
+      <section class="ai" aria-labelledby="ai-title">
+        <div class="ai-top">
+          <span class="label">For AI agents</span>
+          <span class="tag">try it</span>
         </div>
-      </div>
-
-      <div class="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-neutral-950 to-transparent -z-20"></div>
-    </section>
-
-    <section id="about-me" class="py-24 sm:py-40">
-      <div class="grid grid-cols-8 items-center max-w-[128rem] mx-auto">
-        <div class="col-span-6 sm:col-span-3 col-start-2 sm:col-start-2">
-          <h1
-                  class="font-bold text-5xl md:text-6xl lg:text-7xl mb-6"
-                  data-aos="custom-fade-up"
-                  data-aos-duration="700"
-                  data-aos-once="true"
-          >
-            <span
-                    class="inline-block mb-8"
-                    data-aos="wave"
-                    data-aos-delay="1000"
-                    data-aos-duration="250"
-            >👋🏻</span><br/>
-            Hi there,
-          </h1>
-          <p
-                  class="text-xl md:text-2xl max-w-2xl leading-relaxed md:leading-relaxed"
-                  data-aos="custom-fade-up"
-                  data-aos-duration="700"
-                  data-aos-delay="150"
-                  data-aos-once="true"
-          >
-            I'm Patrick Huizinga, a creative web developer with a focus on <span class="text-primary-300">UX/UI design</span> and modern <span class="text-teal-300">front-end solutions</span>.
-          </p>
-          <div
-                  class="mt-16 sm:mt-20"
-                  data-aos="custom-fade-up"
-                  data-aos-duration="700"
-                  data-aos-delay="300"
-                  data-aos-once="true"
-          >
-            <h2 class="text-3xl md:text-4xl font-bold">About me</h2>
-            <ul class="text-lg md:text-xl space-y-3 sm:space-y-4 mt-4">
-              <li>
-                <span aria-hidden="true">📆</span>
-                <span class="sr-only">Age:</span>
-                {currentAge} years old</li>
-              <li>
-                <span aria-hidden="true">📍</span>
-                <span class="sr-only">Located in:</span>
-                Eindhoven, Netherlands
-              </li>
-              <li>
-                <span aria-hidden="true">🖌️</span>
-                <span class="sr-only">and</span>
-                Loves being creative!
-              </li>
-            </ul>
-          </div>
+        <p class="ai-statement" id="ai-title">
+          <span class="human-copy">See this page the way an <em>AI agent</em> reads it.</span>
+          <span class="agent-copy">No layout, no photo. Just the <em>meaning</em> an agent needs.</span>
+        </p>
+        <div class="ai-bottom">
+          <button class="switch" id="agent-switch" type="button" aria-pressed="false" aria-label="Show the page as an AI agent reads it">
+            <span>Human</span><span>Agent</span><i aria-hidden="true"></i>
+          </button>
+          <a class="meter" href="/llms.txt">GET /llms.txt · <b>~{tokens}</b> tokens</a>
         </div>
-        <div class="col-span-6 sm:col-span-2 col-start-2 sm:col-start-6 bg-gradient-to-br from-gray-600 to-gray-700 p-px rounded-3xl overflow-hidden mt-16 sm:mt-0"
-             data-aos="shadow">
-          <Image src={Me} alt="Patrick Huizinga"
-                 class="aspect-square sm:aspect-auto object-cover object-top rounded-[1.5rem]"/>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="my-adventure" class="relative py-24 sm:py-40">
-      <div class="grid grid-cols-8 max-w-[128rem] mx-auto">
-        <div class="col-start-2 col-span-6">
-          <h1 class="relative inline-block text-4xl sm:text-7xl font-bold gradient-underline">My adventure</h1>
-        </div>
-        <AdventureList class="col-span-7 mt-8 sm:mt-12"/>
-      </div>
-      <Image src={GradientTeal} alt="" class="absolute right-0 top-40 -z-20"/>
-      <Image src={GradientPurple} alt="" class="absolute left-0 bottom-56 -z-20"/>
-    </section>
+      <Tile href="/projects" name="projects" label="Projects" raw={raw.projects}>
+        <span class="count">{String(projects.length).padStart(2, '0')}</span>
+        <span class="sub">{projects.map(p => p.name).join(', ')}</span>
+      </Tile>
 
-    <section id="showcase" class="py-24 sm:py-40 overflow-x-hidden">
-      <div class="grid grid-cols-8 max-w-[128rem] mx-auto">
-        <div class="col-start-2 col-span-6">
-          <h1 class="relative inline-block text-4xl sm:text-7xl font-bold gradient-underline">Showcase</h1>
-        </div>
-      </div>
-      <ProjectsGrid class="mt-12 sm:mt-20"/>
-    </section>
-
-    <section id="contact" class="py-24 sm:py-40">
-      <ContactForm client:idle>
-        <Image src={Memoji} alt="" class="h-28 sm:h-32 w-auto -mt-12 sm:-mt-20" aria-hidden="true"/>
-      </ContactForm>
-    </section>
-  </main>
+      <Tile href="/contact" name="contact" label="Contact" raw={raw.contact}>
+        <span class="statement">Let's build something.</span>
+        <span class="sub email">{contact.email}</span>
+      </Tile>
+    </main>
+  </div>
 </Layout>
+
+<script>
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+  let typingRun = 0;
+
+  // The agent view swaps every tile to the plain text behind it, typed out like a response
+  function initAgentSwitch() {
+    const agentSwitch = document.getElementById('agent-switch');
+    if (!agentSwitch) return;
+
+    const raws = [...document.querySelectorAll<HTMLElement>('.raw')];
+    const fullTexts = raws.map(el => el.textContent ?? '');
+
+    agentSwitch.addEventListener('click', async () => {
+      const on = agentSwitch.getAttribute('aria-pressed') !== 'true';
+      document.documentElement.classList.toggle('agent', on);
+      agentSwitch.setAttribute('aria-pressed', String(on));
+
+      const run = ++typingRun;
+      if (!on || reduceMotion) {
+        raws.forEach((el, i) => el.textContent = fullTexts[i]);
+        return;
+      }
+
+      const steps = 32;
+      for (let step = 1; step <= steps && run === typingRun; step++) {
+        raws.forEach((el, i) => {
+          el.textContent = fullTexts[i].slice(0, Math.ceil(fullTexts[i].length * step / steps));
+        });
+        await sleep(22);
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initAgentSwitch);
+</script>
+
+<style>
+  /* .page is a size container: the photo column is exactly one row high, so the photo stays square */
+  .page {
+    height: 100dvh;
+    container-type: size;
+  }
+
+  .bento {
+    --row: calc((100cqh - 32px - 2 * var(--gap)) / 3);
+    height: 100%;
+    max-width: 1800px;
+    margin-inline: auto;
+    display: grid;
+    gap: var(--gap);
+    padding-block: 16px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    grid-template-columns: var(--row) repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "photo   hello    hello hello"
+      "about   projects ai    ai"
+      "contact contact  ai    ai";
+  }
+
+  /* Entrance on a fresh load only */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html:not([data-navigated])) .bento > :global(*) {
+      animation: rise .7s var(--ease) both;
+    }
+
+    :global(html:not([data-navigated])) .bento > :global(:nth-child(2)) { animation-delay: .05s; }
+    :global(html:not([data-navigated])) .bento > :global(:nth-child(3)) { animation-delay: .1s; }
+    :global(html:not([data-navigated])) .bento > :global(:nth-child(4)) { animation-delay: .15s; }
+    :global(html:not([data-navigated])) .bento > :global(:nth-child(5)) { animation-delay: .2s; }
+    :global(html:not([data-navigated])) .bento > :global(:nth-child(6)) { animation-delay: .25s; }
+  }
+
+  .label {
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+
+  .statement {
+    display: block;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 48;
+    font-weight: 600;
+    font-size: clamp(19px, min(1.9vw, 3.5cqh), 32px);
+    line-height: 1.08;
+    letter-spacing: -.03em;
+    text-wrap: balance;
+  }
+
+  .sub {
+    display: block;
+    margin-top: 8px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+  }
+
+  .email {
+    overflow-wrap: anywhere;
+  }
+
+  .now-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    vertical-align: 1px;
+  }
+
+  .count {
+    display: block;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 96;
+    font-weight: 700;
+    font-size: clamp(44px, min(4.6vw, 8cqh), 84px);
+    line-height: .85;
+    letter-spacing: -.05em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .raw {
+    display: none;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: clamp(11.5px, 1.55vh, 13px);
+    line-height: 1.6;
+    color: var(--ink-2);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  :global(html.agent) .raw {
+    display: block;
+  }
+
+  :global(html.agent) .hello .human, :global(html.agent) .photo :global(img) {
+    display: none;
+  }
+
+  /* ---------- photo ---------- */
+  .photo {
+    grid-area: photo;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: var(--r);
+    overflow: hidden;
+    background: #c9c6f2;
+  }
+
+  .photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  :global(html.agent) .photo {
+    padding: var(--pad);
+    background: transparent;
+    border: 1px dashed rgb(255 255 255 / .14);
+  }
+
+  /* ---------- hello ---------- */
+  .hello {
+    grid-area: hello;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 6px 10px 12px;
+    container-type: inline-size;
+  }
+
+  .hello .human {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px 32px;
+  }
+
+  .hello h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 96;
+    font-weight: 700;
+    font-size: clamp(44px, min(11cqw, 12.5cqh), 150px);
+    line-height: .88;
+    letter-spacing: -.045em;
+  }
+
+  .lede {
+    margin: 0;
+    max-width: 30ch;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24;
+    font-weight: 450;
+    font-size: clamp(17px, min(2.6cqw, 3cqh), 28px);
+    line-height: 1.2;
+    letter-spacing: -.015em;
+    color: var(--ink-2);
+    text-wrap: balance;
+  }
+
+  :global(html.agent) .hello {
+    padding: var(--pad);
+    border: 1px dashed rgb(255 255 255 / .14);
+    border-radius: var(--r);
+  }
+
+  .raw-hello {
+    font-size: clamp(14px, 2.2vh, 19px);
+    color: var(--ink);
+  }
+
+  /* ---------- AI tile ---------- */
+  .ai {
+    grid-area: ai;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    padding: var(--pad);
+    border-radius: var(--r);
+    background: var(--tile);
+    border: 1px solid var(--line);
+  }
+
+  .ai-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 2px 7px;
+  }
+
+  .ai-statement {
+    margin: 0;
+    max-width: 18ch;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 48;
+    font-weight: 600;
+    font-size: clamp(24px, min(2.6vw, 4.6cqh), 44px);
+    line-height: 1.08;
+    letter-spacing: -.03em;
+    text-wrap: balance;
+  }
+
+  .ai-statement em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .agent-copy {
+    display: none;
+  }
+
+  :global(html.agent) .human-copy {
+    display: none;
+  }
+
+  :global(html.agent) .agent-copy {
+    display: inline;
+  }
+
+  .ai-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    cursor: pointer;
+  }
+
+  .switch span {
+    position: relative;
+    z-index: 1;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-2);
+    text-align: center;
+    transition: color .35s;
+  }
+
+  .switch i {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    border-radius: 999px;
+    background: var(--ink);
+    transition: transform .5s var(--ease), background-color .35s;
+  }
+
+  .switch[aria-pressed="true"] i {
+    transform: translateX(100%);
+    background: var(--accent);
+  }
+
+  .switch[aria-pressed="false"] span:first-of-type, .switch[aria-pressed="true"] span:last-of-type {
+    color: var(--bg);
+  }
+
+  .meter {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    text-decoration: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .meter b {
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+
+  .meter:hover {
+    color: var(--ink-2);
+  }
+
+  /* ---------- tablet, short or narrow screens: a scrolling stack ---------- */
+  @media (max-width: 1080px), (max-height: 600px) {
+    .page {
+      height: auto;
+      container-type: normal;
+    }
+
+    .bento {
+      height: auto;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: none;
+      grid-template-areas:
+        "hello   hello   hello"
+        "photo   about   projects"
+        "ai      ai      ai"
+        "contact contact contact";
+    }
+
+    .hello {
+      padding: 32px 4px 20px;
+    }
+
+    .hello h1 {
+      font-size: clamp(44px, 11cqw, 120px);
+    }
+
+    .lede {
+      font-size: clamp(17px, 2.6cqw, 26px);
+    }
+
+    .photo {
+      aspect-ratio: 1 / 1;
+    }
+
+    .ai {
+      min-height: 380px;
+    }
+
+    .statement {
+      font-size: clamp(19px, 2.6vw, 28px);
+    }
+
+    .count {
+      font-size: clamp(44px, 7vw, 72px);
+    }
+
+    .ai-statement {
+      font-size: clamp(24px, 4.4vw, 40px);
+    }
+
+    :global(.tile[data-tile="contact"]) {
+      min-height: 170px;
+    }
+  }
+
+  /* Phones: a smaller photo next to the about tile */
+  @media (max-width: 640px) {
+    .bento {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-areas:
+        "hello    hello"
+        "photo    about"
+        "ai       ai"
+        "projects contact";
+    }
+
+    .hello {
+      padding-top: 24px;
+    }
+
+    .statement {
+      font-size: 18px;
+    }
+
+    .sub {
+      font-size: 12.5px;
+    }
+
+    .ai {
+      min-height: 280px;
+    }
+
+    .switch span {
+      padding: 9px 18px;
+    }
+
+    .raw-hello {
+      font-size: 14px;
+    }
+  }
+</style>
